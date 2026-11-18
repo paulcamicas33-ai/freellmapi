@@ -1,0 +1,6 @@
+{
+  "fps": 30,
+  "duration": 6.0,
+  "scenes": [{ "id": "demo", "start": 0.0, "end": 6.0 }],
+  "lines": [{ "id": "l1", "text": "Il était une fois un petit *renard*.", "start": 0.6, "end": 5.2 }]
+}

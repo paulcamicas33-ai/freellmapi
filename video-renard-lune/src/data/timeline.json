@@ -1,0 +1,15 @@
+{
+  "fps": 30,
+  "duration": 24.0,
+  "scenes": [
+    { "id": "s1", "start": 0.0, "end": 4.0 },
+    { "id": "s2", "start": 4.0, "end": 10.0 },
+    { "id": "s3", "start": 10.0, "end": 16.5 },
+    { "id": "s4", "start": 16.5, "end": 24.0 }
+  ],
+  "lines": [
+    { "id": "l1", "text": "Une nuit, une petite *étoile* tomba du ciel.", "start": 4.4, "end": 8.6 },
+    { "id": "l2", "text": "Elle était triste : elle voulait rentrer *chez elle*.", "start": 10.4, "end": 14.6 },
+    { "id": "l3", "text": "Lou la lança très haut… et le ciel se mit à *briller*.", "start": 17.0, "end": 21.8 }
+  ]
+}
