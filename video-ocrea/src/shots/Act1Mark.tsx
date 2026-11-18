@@ -23,7 +23,8 @@ export const Act1Mark: React.FC<{ t: number }> = ({ t }) => {
   return (
     <Stage fog={[6, 16]}>
       <Rig pose={pose} />
-      <KeyLights power={1.7 + flash * 0.8} />
+      <KeyLights power={2.8 + flash * 0.6} fill={0.7} />
+      <directionalLight position={[0.5, 0.6, 6]} intensity={0.9} color={C.key} />
       <pointLight position={[-2.4, 1.6, -1.6]} intensity={18} color={C.glow} distance={8} decay={2} />
       <pointLight position={[2.6, -0.4, -1.4]} intensity={14 + flash * 30} color={C.glow} distance={9} decay={2} />
       <group scale={SCALE} position={[sinkK * 1.5, -sinkK * 0.6, -sinkK * 9]}>

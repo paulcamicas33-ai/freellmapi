@@ -37,7 +37,6 @@ export const Act5Box: React.FC<{ t: number }> = ({ t }) => {
       <Rig pose={path(t, 18.6, 22.6)} />
       <KeyLights power={3.0} fill={0.45} />
       <pointLight position={[BOX_X, 0.75, 0]} intensity={spill * 30} color={C.glow} distance={7} decay={2} />
-      <pointLight position={[BOX_X + 1.5, 2.6, -3.2]} intensity={10} color={C.terracotta} distance={9} decay={2} />
       {/* varnished wood table */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
         <planeGeometry args={[14, 14]} />

@@ -14,7 +14,8 @@ const Logo3D: React.FC<{ t: number }> = ({ t }) => {
   return (
     <Stage fog={[6, 16]}>
       <Rig pose={path(t, 25.4, 28.0)} />
-      <KeyLights power={1.8} />
+      <KeyLights power={2.8} fill={0.7} />
+      <directionalLight position={[0.5, 0.6, 6]} intensity={0.9} color={C.key} />
       <pointLight position={[-2.4, 2.4, -1.6]} intensity={18} color={C.glow} distance={8} decay={2} />
       <pointLight position={[2.4, 0.4, -1.4]} intensity={16} color={C.glow} distance={9} decay={2} />
       <group scale={0.62} position={[0, 1.25, 0]}>
