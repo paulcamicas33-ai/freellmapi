@@ -1,0 +1,92 @@
+{
+  "fps": 60,
+  "duration": 28.0,
+  "lines": [
+    {
+      "id": "mark",
+      "text": "Ocrea",
+      "start": 0.4,
+      "end": 3.6,
+      "accent": 2.2
+    },
+    {
+      "id": "rise",
+      "text": "Votre prochain film tient dans la main.",
+      "start": 4.6,
+      "end": 7.6,
+      "accent": 6.4
+    },
+    {
+      "id": "prompt",
+      "text": "Une image. Une phrase. Envoyer.",
+      "start": 8.4,
+      "end": 13.0,
+      "accent": 11.2
+    },
+    {
+      "id": "route",
+      "text": "Chaque plan trouve sa place.",
+      "start": 14.6,
+      "end": 18.2,
+      "accent": 16.8
+    },
+    {
+      "id": "box",
+      "text": "Prêt à ouvrir.",
+      "start": 19.0,
+      "end": 22.0,
+      "accent": 21.0
+    },
+    {
+      "id": "line",
+      "text": "Tout le cinéma, sans le plateau.",
+      "start": 22.8,
+      "end": 25.2,
+      "accent": 23.4
+    },
+    {
+      "id": "cta",
+      "text": "Créez votre premier film — gratuit",
+      "start": 25.8,
+      "end": 28.0,
+      "accent": 26.4
+    }
+  ],
+  "acts": [
+    {
+      "id": "a1",
+      "start": 0.0,
+      "end": 4.0
+    },
+    {
+      "id": "a2",
+      "start": 4.0,
+      "end": 8.0
+    },
+    {
+      "id": "a3",
+      "start": 8.0,
+      "end": 13.9
+    },
+    {
+      "id": "a4",
+      "start": 13.9,
+      "end": 18.6
+    },
+    {
+      "id": "a5",
+      "start": 18.6,
+      "end": 22.6
+    },
+    {
+      "id": "a6",
+      "start": 22.6,
+      "end": 25.4
+    },
+    {
+      "id": "a7",
+      "start": 25.4,
+      "end": 28.0
+    }
+  ]
+}
