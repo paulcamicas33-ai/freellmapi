@@ -9,6 +9,8 @@ export type Pose = {
   tilt?: number; headTilt?: number; lookX?: number; lookY?: number;
   blink?: number; mouth?: number; smile?: number; brow?: number;
   sx?: number; sy?: number; bob?: number; tail?: number; earL?: number; earR?: number;
+  /** 0..1: stretch an arm to hold something high or wave; a raised arm (|angle| > 110) is drawn in front of the head. */
+  reachL?: number; reachR?: number;
 };
 
 const Limb: React.FC<{ x: number; y: number; angle: number; len: number; w: number; fill: string; line: string; end: "hand" | "foot" }> = ({
@@ -87,8 +89,10 @@ export const Critter: React.FC<{ id: string; species: Species; look: Look; x: nu
 }) => {
   const {
     armL = 8, armR = -8, legL = 0, legR = 0, tilt = 0, headTilt = 0, lookX = 0, lookY = 0,
-    blink = 0, mouth = 0, smile = 0.6, brow = 0, sx = 1, sy = 1, bob = 0, tail = 0, earL = 0, earR = 0,
+    blink = 0, mouth = 0, smile = 0.6, brow = 0, sx = 1, sy = 1, bob = 0, tail = 0, earL = 0, earR = 0, reachL = 0, reachR = 0,
   } = pose;
+  const armLen = (r: number) => 64 + r * 110;
+  const upL = Math.abs(armL) > 110, upR = Math.abs(armR) > 110;
   const line = shade(look.fur, -0.5);
   const furShade = shade(look.fur, -0.18);
   const inner = look.blush ?? "#f4a3a8";
@@ -119,8 +123,8 @@ export const Critter: React.FC<{ id: string; species: Species; look: Look; x: nu
             <path d="M 22 -158 L 42 -104 L 14 -110 Z" fill={look.accent} stroke={shade(look.accent, -0.45)} strokeWidth={4} strokeLinejoin="round" />
           </g>
         ) : null}
-        <Limb x={-58} y={-166} angle={armL} len={64} w={26} fill={`url(#${id}-fur)`} line={line} end="hand" />
-        <Limb x={58} y={-166} angle={armR} len={64} w={26} fill={`url(#${id}-fur)`} line={line} end="hand" />
+        {upL ? null : <Limb x={-58} y={-166} angle={armL} len={armLen(reachL)} w={26} fill={`url(#${id}-fur)`} line={line} end="hand" />}
+        {upR ? null : <Limb x={58} y={-166} angle={armR} len={armLen(reachR)} w={26} fill={`url(#${id}-fur)`} line={line} end="hand" />}
         <g transform={`translate(0,-238) rotate(${headTilt})`}>
           <Ears species={species} fill={`url(#${id}-fur)`} inner={inner} line={line} earL={earL} earR={earR} />
           <ellipse cx={0} cy={0} rx={86} ry={74} fill={`url(#${id}-fur)`} stroke={line} strokeWidth={5} />
@@ -156,6 +160,8 @@ export const Critter: React.FC<{ id: string; species: Species; look: Look; x: nu
           )}
           <path d="M -62 -40 Q -40 -66 -8 -70" fill="none" stroke="#fff" strokeOpacity={0.4} strokeWidth={7} strokeLinecap="round" />
         </g>
+        {upL ? <Limb x={-58} y={-166} angle={armL} len={armLen(reachL)} w={26} fill={`url(#${id}-fur)`} line={line} end="hand" /> : null}
+        {upR ? <Limb x={58} y={-166} angle={armR} len={armLen(reachR)} w={26} fill={`url(#${id}-fur)`} line={line} end="hand" /> : null}
       </g>
     </g>
   );

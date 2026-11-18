@@ -46,7 +46,7 @@ export const Scene2Fall: React.FC<{ t: number; W: number; H: number }> = ({ t, W
         <Flower t={t} x={W * 0.47} y={ground + 30} color="#ffd166" seed={5} scale={0.8} />
         <Critter id="s2-lou" species={LOU.species} look={LOU.look} x={louX} y={ground + 6} scale={LOU.scale}
           pose={{
-            ...(walking ? w : { armL: surprised ? -140 : 10, armR: surprised ? 140 : -10 }),
+            ...(walking ? w : { armL: surprised ? 130 : 10, armR: surprised ? -130 : -10, reachL: surprised ? 0.3 : 0, reachR: surprised ? 0.3 : 0 }),
             sx: sur.sx, sy: sur.sy * breathe(t), blink: blink(t, 2),
             brow: surprised ? 1 : 0.2, mouth: surprised ? 0.6 : 0, lookX: 1, lookY: t < 5.0 ? -0.6 : 0.2,
             tail: sway(t, 2, walking ? 12 : 5, walking ? 1.8 : 0.8), headTilt: walking ? 0 : -6,

@@ -15,7 +15,7 @@ export const Scene4Return: React.FC<{ t: number; W: number; H: number }> = ({ t,
   const crouch = t > 18.4 && t < 18.7 ? Math.sin(prog(t, 18.4, 18.7) * Math.PI) : 0;
   const jump = hop(t, 18.7, 19.3, 70);
   const held = t < 18.9;
-  const handY = ground - 330 * 1.15 + jump.y - 30;
+  const handY = ground - 60 + jump.y - (166 + 174) * 1.15 - 46;
   const fly = cam(prog(t, 18.9, 20.6));
   const home = { x: W * 0.72, y: H * 0.16 };
   const sx = held ? louX : louX + (home.x - louX) * fly;
@@ -32,7 +32,8 @@ export const Scene4Return: React.FC<{ t: number; W: number; H: number }> = ({ t,
         <Hill id="s4-near" width={W} height={H} base={ground} amp={70} freq={0.0032} seed={11} color={NIGHT.near} rim="#8fb0c4" />
         <Critter id="s4-lou" species={LOU.species} look={LOU.look} x={louX} y={ground - 60 + jump.y} scale={1.15}
           pose={{
-            armL: held ? -165 : t > 21 ? 10 : -120, armR: held ? 165 : t > 21 ? 150 + wave : 120,
+            armL: held ? 172 : t > 21 ? 10 : 150, armR: held ? -172 : t > 21 ? -150 + wave : -150,
+            reachL: held ? 1 : t > 21 ? 0 : 0.5, reachR: held ? 1 : 0.5,
             lookY: -0.9, lookX: t > 19 ? 0.6 : 0, headTilt: -8, smile: 1, brow: 0.5,
             mouth: t > 19.0 && t < 19.8 ? 0.6 : 0, blink: t > 22.3 ? 1 : blink(t, 4),
             sx: jump.sx, sy: jump.sy * (1 - crouch * 0.12) * breathe(t), tail: sway(t, 4, 10, 1.2),

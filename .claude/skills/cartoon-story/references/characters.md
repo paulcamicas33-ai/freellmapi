@@ -9,10 +9,13 @@ origin between the feet on the ground. Props:
 - `id` (unique; prefixes its gradient and clip ids), `species`: `fox` | `bunny` | `bear` | `cat`
 - `look`: `fur`, `belly`, optional `accent` (scarf colour), `eye`, `blush`
 - `x`, `y` (ground point in the layer's px), `scale`, `facing` (1 right, -1 left)
-- `pose`: all optional — `armL`, `armR`, `legL`, `legR` (degrees; 0 = hanging down, negative
-  swings the arm forward/up for a right-facing character's right arm), `tilt` (body), `headTilt`,
+- `pose`: all optional — `armL`, `armR`, `legL`, `legR` (degrees; 0 = hanging down; a positive
+  `armL` and a negative `armR` swing the arms outward and up — the opposite signs cross them in
+  front of the face), `tilt` (body), `headTilt`,
   `lookX`, `lookY` (-1..1), `blink` (0..1), `mouth` (0..1 open), `smile` (0..1), `brow` (-1 sad/angry,
-  +1 surprised), `sx`, `sy` (squash), `bob` (px, negative = up), `tail` (degrees), `earL`, `earR`.
+  +1 surprised), `sx`, `sy` (squash), `bob` (px, negative = up), `tail` (degrees), `earL`, `earR`,
+  `reachL`, `reachR` (0..1: a longer arm to hold something above the head or wave high; an arm
+  raised past 110 degrees is drawn in front of the head so the big head does not hide it).
 
 Put each story character's species, look and scale in `src/cast/cast.ts` so every scene uses the
 same design.
@@ -36,7 +39,9 @@ Every beat is anticipation → action → follow-through:
    2–5 frames), with a small overshoot.
 
 Expressions (pose fragments):
-- happy: `{ smile: 1, brow: 0.3, armL: -150, armR: 150 }` + bounce
+- happy: `{ smile: 1, brow: 0.3, armL: 150, armR: -150, reachL: 0.5, reachR: 0.5 }` + bounce
+- holding something up high: `{ armL: 172, armR: -172, reachL: 1, reachR: 1, lookY: -0.9 }`; the
+  object sits about `(64 + 110) * scale` px above the shoulders (shoulders at y -166 * scale)
 - surprised: `{ brow: 1, mouth: 0.6, lookY: -0.3 }` + `squashAt`
 - sad: `{ brow: -0.8, smile: 0, headTilt: 10, lookY: 0.6, armL: 5, armR: -5 }`
 - curious: `{ headTilt: -12, lookX: 0.8, brow: 0.5 }`

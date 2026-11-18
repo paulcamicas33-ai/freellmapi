@@ -33,7 +33,8 @@ export const Scene3Meet: React.FC<{ t: number; W: number; H: number }> = ({ t, W
         <Critter id="s3-lou" species={LOU.species} look={LOU.look} x={louX} y={ground + 8 + louHop.y} scale={1.3}
           pose={{
             tilt: lean * 10 * (1 - happy), headTilt: 12 * (1 - happy) - happy * 4,
-            armR: -10 - reach * 70 + happy * 160 * (t > 15.2 ? 1 : 0), armL: 10 - happy * 150 * (t > 15.2 ? 1 : 0),
+            armR: -10 - reach * 70 - happy * 140 * (t > 15.2 ? 1 : 0), armL: 10 + happy * 140 * (t > 15.2 ? 1 : 0),
+            reachL: happy * 0.5, reachR: reach * 0.3 + happy * 0.5,
             lookX: 1, lookY: 0.5 * (1 - happy), brow: -0.3 * (1 - happy) + happy * 0.6, smile: 0.3 + happy * 0.7,
             mouth: t > 15.2 && t < 16.2 ? 0.5 : 0, blink: blink(t, 3),
             sx: louHop.sx * joy.sx, sy: louHop.sy * joy.sy * breathe(t), tail: sway(t, 3, 6 + happy * 14, 0.8 + happy),
