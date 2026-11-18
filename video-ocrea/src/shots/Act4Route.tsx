@@ -9,7 +9,7 @@ import { Stage, Rig, KeyLights, Dust, Glow, C } from "../world/common";
 import { Tube } from "../world/brand";
 import { shotTexture } from "../world/textures";
 
-const N = 7; // blocks from -N..N
+const N = 10; // blocks from -N..N
 const ROUTE_PTS: [number, number][] = [[-5.5, 5.5], [-5.5, 1.5], [-1.5, 1.5], [-1.5, -2.5], [3.5, -2.5], [3.5, -5.5]];
 const route = (() => {
   const cp = new CurvePath<Vector3>();
@@ -25,7 +25,7 @@ const blocks = (() => {
   for (let i = -N; i <= N; i++) {
     for (let j = -N; j <= N; j++) {
       const id = (i + N) * 31 + (j + N);
-      const h = 0.25 + Math.pow(rand(11, id), 2.2) * 2.6;
+      const h = 0.15 + Math.pow(rand(11, id), 2.6) * 1.6;
       out.push({ x: i, z: j, h, s: 0.62 + rand(12, id) * 0.16 });
     }
   }
@@ -35,11 +35,12 @@ const blocks = (() => {
 const windows = (() => {
   const out: { x: number; y: number; z: number }[] = [];
   blocks.forEach((b, i) => {
-    if (b.h > 0.9 && rand(13, i) > 0.45) {
+    if (b.h > 0.5 && rand(13, i) > 0.55) {
       const n = 1 + Math.floor(rand(14, i) * 3);
       for (let k = 0; k < n; k++) {
         const side = rand(15, i * 5 + k) > 0.5 ? 1 : -1;
         out.push({ x: b.x + (rand(16, i * 5 + k) - 0.5) * b.s * 0.7, y: 0.3 + rand(17, i * 5 + k) * (b.h - 0.4), z: b.z + side * (b.s / 2 + 0.005) });
+        if (rand(20, i * 5 + k) > 0.6) out.push({ x: b.x + (rand(18, i * 5 + k) - 0.5) * b.s * 0.6, y: b.h + 0.03, z: b.z + (rand(19, i * 5 + k) - 0.5) * b.s * 0.6 });
       }
     }
   });
@@ -52,16 +53,8 @@ const path = makePath(
   [0, 0.02],
 );
 
-const TILE_AT = [0.12, 0.3, 0.46, 0.62, 0.78, 0.93];
-
-export const Act4Route: React.FC<{ t: number }> = ({ t }) => {
-  const line = L("route");
-  const drawStart = 14.5, drawEnd = line.accent;
-  const routeK = arrive(prog(t, drawStart, drawEnd));
-  const flare = Math.exp(-Math.pow((t - line.accent) / 0.2, 2)) + prog(t, 18.2, 18.6) * 1.5;
-  const box = useMemo(() => new BoxGeometry(1, 1, 1), []);
-  const win = useMemo(() => new BoxGeometry(0.08, 0.05, 0.01), []);
-  const tileGeo = useMemo(() => new RoundedBoxGeometry(1.1, 0.62, 0.06, 3, 0.025), []);
+/** Lives inside the R3F tree so its refs exist when the layout effect runs. */
+const City: React.FC<{ box: BoxGeometry; win: BoxGeometry }> = ({ box, win }) => {
   const ref = useRef<InstancedMesh>(null);
   const wref = useRef<InstancedMesh>(null);
   useLayoutEffect(() => {
@@ -80,22 +73,39 @@ export const Act4Route: React.FC<{ t: number }> = ({ t }) => {
     });
     if (wref.current) wref.current.instanceMatrix.needsUpdate = true;
   }, []);
+  return (
+    <>
+      <instancedMesh ref={ref} args={[box, undefined, blocks.length]} frustumCulled={false}>
+        <meshStandardMaterial color={"#3e2617"} roughness={0.6} metalness={0.1} />
+      </instancedMesh>
+      <instancedMesh ref={wref} args={[win, undefined, windows.length]} frustumCulled={false}>
+        <meshBasicMaterial color={[1.6, 0.8, 0.25]} toneMapped={false} />
+      </instancedMesh>
+    </>
+  );
+};
+
+const TILE_AT = [0.12, 0.3, 0.46, 0.62, 0.78, 0.93];
+
+export const Act4Route: React.FC<{ t: number }> = ({ t }) => {
+  const line = L("route");
+  const drawStart = 14.5, drawEnd = line.accent;
+  const routeK = arrive(prog(t, drawStart, drawEnd));
+  const flare = Math.exp(-Math.pow((t - line.accent) / 0.2, 2)) + prog(t, 18.2, 18.6) * 1.5;
+  const box = useMemo(() => new BoxGeometry(1, 1, 1), []);
+  const win = useMemo(() => new BoxGeometry(0.06, 0.06, 0.06), []);
+  const tileGeo = useMemo(() => new RoundedBoxGeometry(1.1, 0.62, 0.06, 3, 0.025), []);
   const end = route.getPointAt(1);
   return (
-    <Stage fog={[10, 34]}>
+    <Stage fog={[22, 60]}>
       <Rig pose={path(t, 13.9, 18.6)} />
-      <KeyLights power={2.0} fill={0.25} />
+      <KeyLights power={3.0} fill={0.6} />
       <mesh rotation={[-Math.PI / 2, 0, 0]}>
         <planeGeometry args={[60, 60]} />
-        <meshStandardMaterial color={"#0d0705"} roughness={0.85} />
+        <meshStandardMaterial color={"#1a0f0a"} roughness={0.85} />
       </mesh>
-      <instancedMesh ref={ref} args={[box, undefined, blocks.length]}>
-        <meshStandardMaterial color={"#24150e"} roughness={0.7} metalness={0.15} />
-      </instancedMesh>
-      <instancedMesh ref={wref} args={[win, undefined, windows.length]}>
-        <meshBasicMaterial color={C.amber} toneMapped={false} />
-      </instancedMesh>
-      <Tube curve={route} progress={routeK} radius={0.07} intensity={2.6} headSize={1.6} />
+      <City box={box} win={win} />
+      <Tube curve={route} progress={routeK} radius={0.08} headSize={1.6} bloom={0.7} />
       {routeK > 0 ? <pointLight position={[route.getPointAt(Math.max(0.001, routeK)).x, 0.8, route.getPointAt(Math.max(0.001, routeK)).z]} intensity={18} color={C.glow} distance={5} decay={2} /> : null}
       {TILE_AT.map((f, i) => {
         const ts = drawStart + (drawEnd - drawStart) * f;

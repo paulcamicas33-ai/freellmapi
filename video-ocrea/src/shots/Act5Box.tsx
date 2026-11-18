@@ -6,7 +6,7 @@ import { arrive, cam, prog } from "../lib/ease";
 import { makePath } from "../lib/camera";
 import { Stage, Rig, KeyLights, Dust, Glow, C } from "../world/common";
 import { Tube, swooshCurve } from "../world/brand";
-import { woodTexture } from "../world/textures";
+import { glowTexture, woodTexture } from "../world/textures";
 
 const BOX_X = 0.9;
 const BW = 2.0, BH = 0.9, BD = 1.4, LH = 0.18;
@@ -19,8 +19,8 @@ const lidCurve = new CatmullRomCurve3(
 );
 
 const path = makePath(
-  [[3.4, 1.9, 5.6], [2.6, 1.55, 4.6], [2.0, 1.35, 3.9]],
-  [[0.35, 0.55, 0], [0.3, 0.6, 0], [0.25, 0.7, 0]],
+  [[4.6, 2.6, 7.2], [3.8, 2.2, 6.3], [3.2, 2.0, 5.6]],
+  [[-0.1, 0.5, 0], [-0.15, 0.6, 0], [-0.2, 0.75, 0]],
   [0.01, -0.01],
 );
 
@@ -35,33 +35,39 @@ export const Act5Box: React.FC<{ t: number }> = ({ t }) => {
   return (
     <Stage fog={[5, 16]}>
       <Rig pose={path(t, 18.6, 22.6)} />
-      <KeyLights power={2.2} fill={0.3} />
+      <KeyLights power={3.0} fill={0.45} />
       <pointLight position={[BOX_X, 0.75, 0]} intensity={spill * 30} color={C.glow} distance={7} decay={2} />
-      <pointLight position={[-2.5, 1.2, -2.5]} intensity={6} color={C.terracotta} distance={8} decay={2} />
+      <pointLight position={[BOX_X + 1.5, 2.6, -3.2]} intensity={10} color={C.terracotta} distance={9} decay={2} />
       {/* varnished wood table */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
         <planeGeometry args={[14, 14]} />
-        <meshPhysicalMaterial map={woodTexture()} roughness={0.32} clearcoat={1} clearcoatRoughness={0.12} metalness={0.05} />
+        <meshPhysicalMaterial map={woodTexture()} roughness={0.42} clearcoat={0.8} clearcoatRoughness={0.25} metalness={0.05} />
       </mesh>
       <group position={[BOX_X, 0, 0]} rotation={[0, -0.32, 0]}>
+        {/* contact shadow: the box sits on the wood */}
+        <mesh position={[0, 0.004, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+          <planeGeometry args={[BW * 1.5, BD * 1.6]} />
+          <meshBasicMaterial color={"#000000"} alphaMap={glowTexture()} transparent opacity={0.85} depthWrite={false} />
+        </mesh>
         <mesh geometry={bodyGeo} position={[0, BH / 2, 0]}>
           <meshStandardMaterial color={"#5a2614"} roughness={0.5} metalness={0.15} />
         </mesh>
         {/* glowing interior, seen once the lid opens */}
         <mesh position={[0, BH - 0.02, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[BW - 0.12, BD - 0.12]} />
-          <meshBasicMaterial color={[1.0 + spill, 0.62 + spill * 0.5, 0.25 + spill * 0.2]} toneMapped={false} />
+          <meshBasicMaterial color={[1.4 + spill, 0.85 + spill * 0.6, 0.4 + spill * 0.3]} toneMapped={false} />
         </mesh>
-        <group position={[0, BH, -BD / 2]} rotation={[-open * 1.75, 0, 0]}>
+        <group position={[0, BH, -BD / 2]} rotation={[-open * 1.15, 0, 0]}>
           <mesh geometry={lidGeo} position={[0, LH / 2, BD / 2]}>
             <meshStandardMaterial color={"#6a2e18"} roughness={0.45} metalness={0.15} />
           </mesh>
-          <Tube curve={lidCurve} progress={trailK} radius={0.022} intensity={2.4} headSize={0.5} />
+          <Tube curve={lidCurve} progress={trailK} radius={0.022} headSize={0.5} />
         </group>
         {spill > 0 ? (
           <>
             <Glow position={[0, BH + 0.4, 0]} size={2.4 + spill * 2.2} color={C.amber} opacity={Math.min(1, spill)} />
             <Glow position={[0, BH + 1.2, -0.2]} size={1.6 + spill * 3} color={C.glow} opacity={Math.min(0.8, spill * 0.6)} />
+            <Glow position={[0, BH + 2.2, -0.3]} size={1.2 + spill * 2.5} color={C.amber} opacity={Math.min(0.5, spill * 0.4)} />
           </>
         ) : null}
       </group>

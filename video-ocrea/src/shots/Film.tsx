@@ -41,6 +41,7 @@ export const Film: React.FC = () => {
           <AbsoluteFill style={{ filter: defocusIn > 0.01 ? `blur(${defocusIn * 26}px)` : undefined }}>
             <Act4Route t={t} />
           </AbsoluteFill>
+          <AbsoluteFill style={{ background: "linear-gradient(100deg, rgba(7,5,4,0.85) 0%, rgba(7,5,4,0.55) 30%, rgba(7,5,4,0) 52%)" }} />
           <TypeLine t={t} start={route.start} end={route.end} accentT={route.accent} size={124} x={110} y={150} maxWidth={900}
             words={[{ text: "Chaque" }, { text: "plan" }, { text: "trouve" }, { text: "sa" }, { text: "place.", accent: true }]} />
         </>

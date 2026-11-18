@@ -17,7 +17,8 @@ export const Act3Prompt: React.FC<{ t: number }> = ({ t }) => {
       ) : (
         <PhoneUI />
       )}
-      <TypeLine t={t} start={line.start} end={line.end} accentT={line.accent} size={112} x={110} y={300} maxWidth={720}
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, rgba(7,5,4,0.92) 0%, rgba(7,5,4,0.75) 34%, rgba(7,5,4,0) 58%)" }} />
+      <TypeLine t={t} start={line.start} end={line.end} accentT={line.accent} size={112} x={110} y={130} maxWidth={720}
         words={[
           { text: "Une", at: 8.5 }, { text: "image.", at: 8.56 },
           { text: "Une", at: 9.1 }, { text: "phrase.", at: 9.16 },

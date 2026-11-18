@@ -4,7 +4,7 @@ import { arrive, exit, prog } from "../lib/ease";
 import { C } from "../world/common";
 import { F } from "../lib/time";
 
-export type Word = { text: string; accent?: boolean; at?: number };
+export type Word = { text: string; accent?: boolean; at?: number; br?: boolean };
 
 /**
  * Kinetic line: each word rises out of a mask (E3), stagger 4 frames; the accent word is
@@ -31,11 +31,12 @@ export const TypeLine: React.FC<{
       {words.map((w, i) => {
         const ws = w.at ?? (w.accent ? accentT - F(16) : start + F(4 * i));
         const k = arrive(prog(t, ws, ws + F(28)));
-        const ty = (1 - k) * 105 - outK * 105;
+        const ty = (1 - k) * 135 - outK * 135;
         const blur = (1 - k) * 8;
         const sheenX = sheen && w.accent ? -60 + prog(t, accentT, accentT + F(40)) * 220 : -100;
         return (
-          <span key={i} style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom",
+          <React.Fragment key={i}>
+          <span style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom",
             paddingBottom: "0.12em", marginBottom: "-0.12em", paddingRight: "0.06em" }}>
             <span style={{ display: "inline-block", transform: `translateY(${ty}%)`, filter: `blur(${blur}px)`,
               ...(w.accent
@@ -49,8 +50,10 @@ export const TypeLine: React.FC<{
                 : {}) }}>
               {w.text}
             </span>
-            {i < words.length - 1 ? " " : null}
+            {i < words.length - 1 && !w.br ? " " : null}
           </span>
+          {w.br ? <br /> : null}
+          </React.Fragment>
         );
       })}
     </div>

@@ -19,9 +19,10 @@ export const Act6Line: React.FC<{ t: number }> = ({ t }) => {
         return <div key={i} style={{ position: "absolute", left: x, top: y, width: s, height: s, borderRadius: s,
           background: C.amber, opacity: 0.25 + rand(36, i) * 0.35, boxShadow: `0 0 ${s * 3}px ${C.glow}` }} />;
       })}
-      <TypeLine t={t} start={line.start} end={line.end} accentT={line.accent} size={150} x={160} y={330} maxWidth={1600}
+      <div style={{ position: "absolute", inset: 0, background: C.black, opacity: Math.min(1, Math.max(0, (t - 24.9) / 0.5)) * 0.8 }} />
+      <TypeLine t={t} start={line.start} end={line.end} accentT={line.accent} size={150} x={160} y={340} maxWidth={1600}
         align="center" sheen
-        words={[{ text: "Tout" }, { text: "le" }, { text: "cinéma,", accent: true }, { text: "sans", at: line.start + 0.45 },
+        words={[{ text: "Tout" }, { text: "le" }, { text: "cinéma,", accent: true, br: true }, { text: "sans", at: line.start + 0.45 },
           { text: "le", at: line.start + 0.52 }, { text: "plateau.", at: line.start + 0.59 }]} />
     </>
   );

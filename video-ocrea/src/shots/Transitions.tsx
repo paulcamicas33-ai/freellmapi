@@ -28,7 +28,7 @@ export const Transitions: React.FC<{ t: number }> = ({ t }) => {
           <div style={{ position: "absolute", left: `${-40 + sx * 120}%`, top: 470, width: "60%", height: 26, borderRadius: 13,
             background: `linear-gradient(90deg, rgba(255,154,60,0) 0%, ${C.glow} 60%, #fff3dd 100%)`, filter: "blur(6px)",
             opacity: 0.35 + streak * 0.65 }} />
-          <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse 70% 22% at 50% 45%, rgba(255,200,140,${streak * 0.95}) 0%, rgba(255,154,60,${streak * 0.6}) 40%, rgba(0,0,0,0) 100%)` }} />
+          <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse 85% 48% at 50% 48%, rgba(255,200,140,${streak * 0.95}) 0%, rgba(255,154,60,${streak * 0.6}) 40%, rgba(0,0,0,0) 100%)` }} />
         </>
       ) : null}
       {glow > 0.01 ? (
@@ -53,8 +53,8 @@ export const Transitions: React.FC<{ t: number }> = ({ t }) => {
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(circle at 56% 42%, rgba(255,236,205,${bloom}) 0%, rgba(255,170,90,${bloom * 0.95}) 40%, rgba(120,50,20,${bloom * 0.9}) 100%)` }} />
       ) : null}
       {sweepA > 0.01 ? (
-        <div style={{ position: "absolute", top: 0, bottom: 0, width: 700, left: -700 + sweep * 2620,
-          background: `linear-gradient(100deg, rgba(255,179,71,0) 0%, rgba(255,214,160,${sweepA * 0.95}) 50%, rgba(255,179,71,0) 100%)` }} />
+        <div style={{ position: "absolute", inset: 0,
+          background: `linear-gradient(90deg, rgba(255,179,71,0) ${-30 + sweep * 130}%, rgba(255,214,160,${sweepA * 0.95}) ${-10 + sweep * 130}%, rgba(255,179,71,0) ${10 + sweep * 130}%)` }} />
       ) : null}
     </>
   );

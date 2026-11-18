@@ -14,15 +14,16 @@ const Logo3D: React.FC<{ t: number }> = ({ t }) => {
   return (
     <Stage fog={[6, 16]}>
       <Rig pose={path(t, 25.4, 28.0)} />
-      <KeyLights power={2.4} />
+      <KeyLights power={1.8} />
+      <pointLight position={[-2.4, 2.4, -1.6]} intensity={18} color={C.glow} distance={8} decay={2} />
       <pointLight position={[2.4, 0.4, -1.4]} intensity={16} color={C.glow} distance={9} decay={2} />
       <group scale={0.62} position={[0, 1.25, 0]}>
-        <Tube curve={swooshCurve} progress={draw} radius={0.055} intensity={2.4} />
+        <Tube curve={swooshCurve} progress={draw} radius={0.055} />
         {letters.map((l, i) => {
           const land = 25.75 + i * 0.07;
           const k = arrive(prog(t, land - 0.55, land));
           return (
-            <mesh key={i} geometry={l.geo} position={[l.x, 0.62 - (1 - k) * 1.2, -(1 - k) * 1.4]} rotation={[(1 - k) * 0.5, 0, 0]}>
+            <mesh key={i} geometry={l.geo} position={[l.x, 0.62 - (1 - k) * 1.2, -(1 - k) * 7]} rotation={[(1 - k) * 0.5, 0, 0]}>
               <LetterMaterial glow={0.03} />
             </mesh>
           );
@@ -44,7 +45,7 @@ export const Act7Cta: React.FC<{ t: number }> = ({ t }) => {
     <>
       <Logo3D t={t} />
       <div style={{ position: "absolute", left: 960 - 620, top: 640, width: 1240, height: 200,
-        transform: `translateY(${(1 - rise) * 260}px) scale(${0.94 + rise * 0.06})` }}>
+        transform: `translateY(${(1 - rise) * 560}px) scale(${0.94 + rise * 0.06})` }}>
         {/* slab thickness: an edge plate under the glass */}
         <div style={{ position: "absolute", left: 6, right: 6, top: 18, bottom: -16, borderRadius: 36,
           background: "linear-gradient(180deg, rgba(255,190,120,0.28), rgba(90,40,20,0.5))" }} />

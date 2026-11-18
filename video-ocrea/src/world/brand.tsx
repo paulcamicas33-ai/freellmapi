@@ -24,11 +24,11 @@ export const Tube: React.FC<{
   curve: Curve<Vector3>;
   progress: number;
   radius: number;
-  color?: string;
   intensity?: number;
   head?: boolean;
   headSize?: number;
-}> = ({ curve, progress, radius, color = C.amber, intensity = 2.2, head = true, headSize = 1.1 }) => {
+  bloom?: number;
+}> = ({ curve, progress, radius, intensity = 1.0, head = true, headSize = 1.1, bloom = 0.5 }) => {
   const geo = useMemo(() => new TubeGeometry(curve, TUBULAR, radius, RADIAL, false), [curve, radius]);
   const p = Math.max(0, Math.min(1, progress));
   geo.setDrawRange(0, Math.floor(p * TUBULAR) * RADIAL * 6);
@@ -36,8 +36,16 @@ export const Tube: React.FC<{
   return (
     <group>
       <mesh geometry={geo}>
-        <meshStandardMaterial color={color} emissive={color} emissiveIntensity={intensity} roughness={0.35} metalness={0.1} toneMapped={false} />
+        <meshBasicMaterial color={[1.0 * intensity, 0.5 * intensity, 0.14 * intensity]} toneMapped={false} />
       </mesh>
+      {bloom > 0
+        ? Array.from({ length: 24 }, (_, i) => {
+            const u = (i + 0.5) / 24;
+            if (u > p) return null;
+            const q = curve.getPointAt(u);
+            return <Glow key={i} position={[q.x, q.y, q.z]} size={radius * 14} color={C.glow} opacity={bloom * 0.35} />;
+          })
+        : null}
       {head && p > 0 && p < 1 ? (
         <>
           <Glow position={[hp.x, hp.y, hp.z]} size={headSize} color={C.amber} opacity={0.95} />
@@ -137,5 +145,5 @@ export const useWordmark = () =>
   }, []);
 
 export const LetterMaterial: React.FC<{ glow?: number }> = ({ glow = 0 }) => (
-  <meshStandardMaterial color={"#c9794a"} roughness={0.38} metalness={0.35} emissive={C.glow} emissiveIntensity={glow} />
+  <meshStandardMaterial color={"#9a4c28"} roughness={0.3} metalness={0.55} emissive={C.glow} emissiveIntensity={glow} />
 );

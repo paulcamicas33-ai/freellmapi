@@ -45,10 +45,12 @@ export const PhoneUI: React.FC = () => {
 
   return (
     <div style={{ position: "absolute", inset: 0, perspective: 2400, perspectiveOrigin: "60% 50%" }}>
-      <div style={{ position: "absolute", left: 900, top: -40, width: SW, height: SH,
-        transformOrigin: `${BTN.x}px ${BTN.y}px`,
-        transform: `rotateX(${rotX}deg) rotateY(${rotY}deg) rotateZ(${rotZ}deg) scale(${scale}) translateY(${(1 - drift) * 14}px)`,
+      {/* Authored at 2x (zoom) and shown at 0.5x, so the 3x close-up stays sharp (text magnified in 3D blurs). */}
+      <div style={{ position: "absolute", left: 900 - BTN.x, top: -40 - BTN.y, width: SW * 2, height: SH * 2,
+        transformOrigin: `${BTN.x * 2}px ${BTN.y * 2}px`,
+        transform: `rotateX(${rotX}deg) rotateY(${rotY}deg) rotateZ(${rotZ}deg) scale(${scale * 0.5}) translateY(${(1 - drift) * 28}px)`,
         filter: blur > 0.05 ? `blur(${blur}px)` : undefined }}>
+        <div style={{ position: "absolute", left: 0, top: 0, width: SW, height: SH, zoom: 2 }}>
         {/* phone body */}
         <div style={{ position: "absolute", inset: -18, borderRadius: 78, background: "linear-gradient(135deg,#2b1d16,#0c0806 60%,#3a2418)",
           boxShadow: `0 0 0 2px #3b2a20, 18px 0 60px ${C.glow}55, 0 60px 120px rgba(0,0,0,0.7)` }} />
@@ -57,6 +59,11 @@ export const PhoneUI: React.FC = () => {
           <div style={{ position: "absolute", left: 40, top: 54, fontFamily: FONT.mono, fontWeight: 500, fontSize: 30, color: C.cream, letterSpacing: "0.08em" }}>
             OCREA
           </div>
+          {/* empty slots waiting for shots */}
+          {Array.from({ length: 9 }, (_, i) => (
+            <div key={`s${i}`} style={{ position: "absolute", left: 30 + (i % 3) * 196, top: 120 + Math.floor(i / 3) * 186, width: 184, height: 172,
+              borderRadius: 16, border: "2px dashed rgba(255,179,71,0.16)", background: "rgba(255,255,255,0.025)" }} />
+          ))}
           {/* result grid, unfolds from the send button (E2) */}
           {Array.from({ length: 9 }, (_, i) => {
             const r = Math.floor(i / 3), k = i % 3;
@@ -104,6 +111,7 @@ export const PhoneUI: React.FC = () => {
             <div style={{ position: "absolute", left: BTN.x - 42, top: BTN.y - 42, width: 84, height: 84, borderRadius: 42,
               border: `3px solid ${C.amber}`, transform: `scale(${1 + arrive(ring) * 2.4})`, opacity: 1 - ring }} />
           ) : null}
+        </div>
         </div>
       </div>
     </div>
