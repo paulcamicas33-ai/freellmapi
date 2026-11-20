@@ -4,10 +4,10 @@
 Fichiers : `out/noisette-s2-ep01-9x16.mp4` … `out/noisette-s2-ep10-9x16.mp4`.
 
 ## Le nouvel ami : Pistache
-- **Qui :** une petite souris gris lavande, avec de grandes oreilles roses, une queue rose bouclée et une **écharpe orange**.
-- **Caractère :** timide au début, gourmande, très curieuse. Elle a parfois peur ou se trompe, et Noisette l'aide.
+- **Qui :** un petit souriceau gris lavande, avec de grandes oreilles roses, une queue rose bouclée et une **écharpe orange**.
+- **Caractère :** timide au début, gourmand, très curieux. Il a parfois peur ou se trompe, et Noisette l'aide.
 - **Sa phrase :** « Moi *aussi* ! », dite une fois par épisode. Elle répond à la phrase de Noisette « On essaie *ensemble* ? ». Les deux phrases reviennent dans **chaque** épisode.
-- Elle est présente dans les 10 épisodes, et son design est fixé dans `src/cast/mascot.ts` (`PISTACHE`).
+- Il est présent dans les 10 épisodes, et son design est fixé dans `src/cast/mascot.ts` (`PISTACHE`).
 
 ## Structure (identique à la saison 1)
 Badge « SAISON 2 · ÉPISODE N » + titre (0–3,4 s) → histoire en 6 phrases avec un moment où l'enfant participe → « Moi aussi ! » → carte « Quelle aventure ensuite ? Écris ton idée en commentaire ! » (~28,5 s) → « À très vite ! ».
@@ -41,7 +41,7 @@ Pistache se cache derrière un buisson. Noisette lui dit bonjour, il se présent
 | 22,7 s | « Moi aussi ! » + étoiles orange | « couic » + scintillement |
 
 **Titre :** Un nouvel ami ! 🐭🦔 | Noisette & Pistache, S2 ép. 1
-**Description :** Qui se cache derrière le buisson ? Voici Pistache, la petite souris ! Dis-lui bonjour avec la main 👋 Parents : quelle aventure pour Noisette et Pistache ? En commentaire !
+**Description :** Qui se cache derrière le buisson ? Voici Pistache, le petit souriceau ! Dis-lui bonjour avec la main 👋 Parents : quelle aventure pour Noisette et Pistache ? En commentaire !
 
 ## Épisode 2 — Cache-cache (forêt)
 Noisette compte de 1 à 5 et Pistache se cache… mais sa queue dépasse du buisson !
