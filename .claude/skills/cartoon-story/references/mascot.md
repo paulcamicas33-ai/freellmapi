@@ -50,3 +50,11 @@ and compare: if she looks different from the sheet, fix the scene, not her.
 ## Never
 Change her colours, species or name; give her another catchphrase; make her mean, scared to the
 point of crying alone at the end, or the butt of a joke; put real brand items on her.
+
+## Pistache — Noisette's best friend (from season 2)
+- A shy, greedy, very curious little mouse (species `mouse` in the rig): lavender-grey fur, big
+  pink ears, a curly pink tail, an **orange scarf** (`PISTACHE` in `src/cast/mascot.ts`).
+- His line: « Moi *aussi* ! » — once per episode, answering Noisette's « On essaie *ensemble* ? ».
+- He is in every episode from season 2 on, unless the user says otherwise. He is the one who is
+  scared, makes a mistake or wants everything for himself; Noisette helps; he ends happy.
+- Signature sound (for the sound sheet): a small cute squeak when he says his line.
