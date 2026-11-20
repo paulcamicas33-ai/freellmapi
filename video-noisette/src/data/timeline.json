@@ -1,9 +1,19 @@
 {
   "fps": 30,
-  "duration": 8.5,
-  "scenes": [{ "id": "hello", "start": 0.0, "end": 8.5 }],
+  "duration": 26.0,
+  "scenes": [{ "id": "hello", "start": 0.0, "end": 26.0 }],
   "lines": [
     { "id": "l1", "text": "Bonjour ! Je suis *Noisette*.", "start": 3.3, "end": 5.6, "speaker": "Noisette" },
-    { "id": "l2", "text": "Une nouvelle histoire ? On essaie *ensemble* ?", "start": 5.9, "end": 8.2, "speaker": "Noisette" }
+    { "id": "l2", "text": "Bienvenue sur ma *chaîne* !", "start": 5.9, "end": 7.9, "speaker": "Noisette" },
+    { "id": "l3", "text": "Quelle aventure vais-je vivre ? À toi de *choisir* !", "start": 8.3, "end": 12.4, "speaker": "Noisette" },
+    { "id": "l4", "text": "La Lune ? La mer ? Un *trésor* caché ?", "start": 12.8, "end": 16.0, "speaker": "Noisette" },
+    { "id": "l5", "text": "Demande à un grand d'écrire ton idée en *commentaire* !", "start": 16.4, "end": 20.6, "speaker": "Noisette" },
+    { "id": "l6", "text": "À très *vite* !", "start": 22.2, "end": 25.4, "speaker": "Noisette" }
+  ],
+  "ideas": [
+    { "id": "moon", "label": "La Lune", "at": 12.9 },
+    { "id": "sea", "label": "La mer", "at": 13.7 },
+    { "id": "treasure", "label": "Un trésor", "at": 14.6 },
+    { "id": "yours", "label": "Ton idée ?", "at": 16.5 }
   ]
 }

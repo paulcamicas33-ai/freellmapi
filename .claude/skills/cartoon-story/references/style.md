@@ -45,7 +45,8 @@ A place, not a background: sky (gradient + light + clouds or stars), 2–3 hill 
 depths (far ones blurred 1–3 px), trees and bushes on the mid layer, the ground the characters
 stand on at depth 1, and one foreground element (grass, flowers, a branch) at depth 1.3+ that
 passes the camera. Clouds and stars drift; trees sway; grass bends. Reuse `Sky`, `Hill`, `Tree`,
-`Bush`, `Flower`, `Star`; draw new things (a house, a pond, a moon with a face) in the same manner.
+`Bush`, `Flower`, `Star`, `Lantern`, `ThoughtBubble` (a character imagining or wishing: cloud, icon,
+label, trail to the head; `IdeaIcon` has moon, sea, treasure and a question mark); draw new things (a house, a pond, a moon with a face) in the same manner.
 
 ## 5. Camera and staging
 - Fixed zoom per shot; move the camera instead of zooming fast. Gentle push-ins (zoom 1 → 1.1) on
