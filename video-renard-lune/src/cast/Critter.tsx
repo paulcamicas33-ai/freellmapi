@@ -1,7 +1,7 @@
 import React from "react";
 import { shade } from "../lib/color";
 
-export type Species = "fox" | "bunny" | "bear" | "cat";
+export type Species = "fox" | "bunny" | "bear" | "cat" | "hedgehog";
 export type Look = { fur: string; belly: string; accent?: string; eye?: string; blush?: string };
 /** Every field is optional; angles in degrees, look in -1..1, blink/mouth/smile 0..1. */
 export type Pose = {
@@ -26,6 +26,31 @@ const Limb: React.FC<{ x: number; y: number; angle: number; len: number; w: numb
   </g>
 );
 
+/** Soft rounded spikes on an elliptical arc (angles in degrees, 0 = right, -90 = up), two rows for depth. */
+const Spikes: React.FC<{ cx: number; cy: number; rx: number; ry: number; from: number; to: number; n: number; len: number; fill: string; line: string; tipFill?: string }> = ({
+  cx, cy, rx, ry, from, to, n, len, fill, line, tipFill,
+}) => {
+  const row = (shift: number, l: number) => {
+    let d = "";
+    for (let i = 0; i < n; i++) {
+      const a0 = ((from + ((to - from) * (i + shift)) / n) * Math.PI) / 180;
+      const a1 = ((from + ((to - from) * (i + shift + 1)) / n) * Math.PI) / 180;
+      const am = (a0 + a1) / 2;
+      const p = (a: number, out: number) => `${(cx + Math.cos(a) * (rx + out)).toFixed(1)} ${(cy + Math.sin(a) * (ry + out)).toFixed(1)}`;
+      // base -> curved side -> rounded tip -> curved side -> base (tip leans a little clockwise)
+      d += `${i === 0 ? "M" : "L"} ${p(a0, 0)} Q ${p(am - 0.05, l * 0.55)} ${p(am + 0.02, l)} Q ${p(am + 0.12, l * 0.5)} ${p(a1, 0)} `;
+    }
+    return `M ${cx} ${cy} ${d.replace(/^M/, "L")} Z`;
+  };
+  return (
+    <g>
+      <path d={row(0.5, len * 0.8)} fill={line} stroke={line} strokeWidth={5} strokeLinejoin="round" opacity={0.9} />
+      <path d={row(0, len)} fill={fill} stroke={line} strokeWidth={5} strokeLinejoin="round" />
+      {tipFill ? <path d={row(0, len * 0.55)} fill={tipFill} opacity={0.35} /> : null}
+    </g>
+  );
+};
+
 const Ears: React.FC<{ species: Species; fill: string; inner: string; line: string; earL: number; earR: number }> = ({ species, fill, inner, line, earL, earR }) => {
   if (species === "bunny") {
     return (
@@ -34,6 +59,18 @@ const Ears: React.FC<{ species: Species; fill: string; inner: string; line: stri
           <g key={i} transform={`translate(${x},-56) rotate(${base + rot})`}>
             <ellipse cx={0} cy={-62} rx={22} ry={70} fill={fill} stroke={line} strokeWidth={5} />
             <ellipse cx={0} cy={-58} rx={11} ry={52} fill={inner} />
+          </g>
+        ))}
+      </>
+    );
+  }
+  if (species === "hedgehog") {
+    return (
+      <>
+        {[[-62, earL], [62, earR]].map(([x, rot], i) => (
+          <g key={i} transform={`translate(${x},-36) rotate(${rot})`}>
+            <circle r={19} fill={fill} stroke={line} strokeWidth={5} />
+            <circle r={9} fill={inner} />
           </g>
         ))}
       </>
@@ -77,6 +114,7 @@ const Tail: React.FC<{ species: Species; fill: string; tip: string; line: string
   if (species === "cat") {
     return <path d={`M -50 -90 C -110 -100 -${120 + wag} -170 -${80 + wag} -200`} fill="none" stroke={line} strokeWidth={22} strokeLinecap="round" />;
   }
+  if (species === "hedgehog") return null;
   return <circle cx={-62 - wag * 0.2} cy={-96} r={species === "bunny" ? 24 : 16} fill={tip} stroke={line} strokeWidth={5} />;
 };
 
@@ -115,6 +153,9 @@ export const Critter: React.FC<{ id: string; species: Species; look: Look; x: nu
         <Tail species={species} fill={`url(#${id}-fur)`} tip={look.belly} line={line} wag={tail} />
         <Limb x={-26} y={-62} angle={legL} len={60} w={30} fill={furShade} line={line} end="foot" />
         <Limb x={26} y={-62} angle={legR} len={60} w={30} fill={furShade} line={line} end="foot" />
+        {species === "hedgehog" ? (
+          <Spikes cx={0} cy={-128} rx={62} ry={70} from={-212} to={32} n={13} len={26} fill={shade(look.fur, -0.35)} line={line} tipFill={shade(look.fur, 0.2)} />
+        ) : null}
         <ellipse cx={0} cy={-128} rx={66} ry={76} fill={`url(#${id}-fur)`} stroke={line} strokeWidth={5} />
         <ellipse cx={0} cy={-112} rx={40} ry={50} fill={look.belly} />
         {look.accent ? (
@@ -126,9 +167,14 @@ export const Critter: React.FC<{ id: string; species: Species; look: Look; x: nu
         {upL ? null : <Limb x={-58} y={-166} angle={armL} len={armLen(reachL)} w={26} fill={`url(#${id}-fur)`} line={line} end="hand" />}
         {upR ? null : <Limb x={58} y={-166} angle={armR} len={armLen(reachR)} w={26} fill={`url(#${id}-fur)`} line={line} end="hand" />}
         <g transform={`translate(0,-238) rotate(${headTilt})`}>
+          {species === "hedgehog" ? (
+            <Spikes cx={0} cy={-6} rx={80} ry={66} from={-198} to={18} n={14} len={30} fill={shade(look.fur, -0.35)} line={line} tipFill={shade(look.fur, 0.2)} />
+          ) : null}
           <Ears species={species} fill={`url(#${id}-fur)`} inner={inner} line={line} earL={earL} earR={earR} />
           <ellipse cx={0} cy={0} rx={86} ry={74} fill={`url(#${id}-fur)`} stroke={line} strokeWidth={5} />
-          {species === "fox" ? (
+          {species === "hedgehog" ? (
+            <path d="M -78 -10 Q -60 -52 -20 -44 Q 0 -30 20 -44 Q 60 -52 78 -10 Q 84 50 0 66 Q -84 50 -78 -10 Z" fill={look.belly} />
+          ) : species === "fox" ? (
             <path d="M -84 6 Q -50 60 0 58 Q 50 60 84 6 Q 50 30 0 26 Q -50 30 -84 6 Z" fill={look.belly} />
           ) : (
             <ellipse cx={0} cy={30} rx={42} ry={28} fill={look.belly} />
@@ -141,8 +187,14 @@ export const Critter: React.FC<{ id: string; species: Species; look: Look; x: nu
                 <circle cx={s * 32 + lookX * 8} cy={-4 + lookY * 9} r={8} fill={shade(eye, -0.5)} />
                 <circle cx={s * 32 + lookX * 8 + 6} cy={-11 + lookY * 9} r={5.5} fill="#fff" />
                 <circle cx={s * 32 + lookX * 8 - 5} cy={3 + lookY * 9} r={2.5} fill="#fff" opacity={0.8} />
-                <rect x={s * 32 - 26} y={-36} width={52} height={58 * blink} fill={look.fur} />
+                <rect x={s * 32 - 26} y={-36} width={52} height={58 * blink} fill={species === "hedgehog" ? look.belly : look.fur} />
               </g>
+              {blink > 0.85 ? (
+                <g>
+                  <ellipse cx={s * 32} cy={-8} rx={25} ry={30} fill={species === "hedgehog" ? look.belly : look.fur} />
+                  <path d={`M ${s * 32 - 16} -4 Q ${s * 32} -20 ${s * 32 + 16} -4`} fill="none" stroke={line} strokeWidth={5.5} strokeLinecap="round" />
+                </g>
+              ) : null}
               <path d={`M ${s * 32 - 15} ${-44 - brow * 8} Q ${s * 32} ${-52 - brow * 10} ${s * 32 + 15} ${-44 - brow * 8}`}
                 fill="none" stroke={line} strokeWidth={5} strokeLinecap="round" />
               <circle cx={s * 60} cy={22} r={13} fill={inner} opacity={0.5} />
@@ -165,4 +217,26 @@ export const Critter: React.FC<{ id: string; species: Species; look: Look; x: nu
       </g>
     </g>
   );
+};
+
+/**
+ * Where a character's hand is, in the same coordinates as its x/y (to make it hold a prop).
+ * Uses the same arm geometry as the rig: shoulder (±58, -166), length 64 + 110 * reach.
+ */
+export const handPosition = (
+  c: { x: number; y: number; scale?: number; facing?: 1 | -1; pose?: Pose },
+  side: "L" | "R",
+) => {
+  const { scale = 1, facing = 1, pose = {} } = c;
+  const { armL = 8, armR = -8, reachL = 0, reachR = 0, sx = 1, sy = 1, bob = 0, tilt = 0 } = pose;
+  const a = ((side === "L" ? armL : armR) * Math.PI) / 180;
+  const len = 64 + (side === "L" ? reachL : reachR) * 110 - 4;
+  let hx = (side === "L" ? -58 : 58) - Math.sin(a) * len;
+  let hy = -166 + Math.cos(a) * len;
+  // body tilt around (0, -120)
+  const tr = (tilt * Math.PI) / 180;
+  const dx = hx, dy = hy + 120;
+  hx = dx * Math.cos(tr) - dy * Math.sin(tr);
+  hy = dx * Math.sin(tr) + dy * Math.cos(tr) - 120;
+  return { x: c.x + hx * sx * scale * facing, y: c.y + (bob + hy * sy) * scale };
 };

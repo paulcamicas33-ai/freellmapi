@@ -78,3 +78,32 @@ export const Star: React.FC<{ x: number; y: number; r: number; color?: string; g
     </g>
   );
 };
+
+/**
+ * Noisette's lantern. (x, y) is the top of the handle = where the hand holds it.
+ * `light` 0..1 (on/off), flickers gently and deterministically with t.
+ */
+export const Lantern: React.FC<{ id: string; t: number; x: number; y: number; scale?: number; light?: number; swing?: number }> = ({
+  id, t, x, y, scale = 1, light = 1, swing = 0,
+}) => {
+  const flick = light * (0.88 + 0.12 * Math.sin(t * 13) * Math.sin(t * 7.3 + 1));
+  const metal = "#6b4a2e";
+  return (
+    <g transform={`translate(${x},${y}) scale(${scale}) rotate(${swing})`}>
+      <defs>
+        <radialGradient id={`${id}-halo`}>
+          <stop offset="0" stopColor="#ffe08a" stopOpacity={0.55 * flick} />
+          <stop offset="0.4" stopColor="#ffc24b" stopOpacity={0.22 * flick} />
+          <stop offset="1" stopColor="#ffc24b" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <circle cx={0} cy={58} r={170} fill={`url(#${id}-halo)`} />
+      <path d="M -18 4 Q 0 -22 18 4" fill="none" stroke={metal} strokeWidth={6} strokeLinecap="round" />
+      <rect x={-26} y={4} width={52} height={14} rx={6} fill={metal} stroke={shade(metal, -0.4)} strokeWidth={3} />
+      <rect x={-22} y={16} width={44} height={66} rx={14} fill={`rgba(255,${200 + 40 * flick},${120 + 60 * flick},${0.35 + 0.55 * flick})`} stroke={shade(metal, -0.4)} strokeWidth={4} />
+      <ellipse cx={0} cy={52} rx={9} ry={15 + 2 * flick} fill="#fff6d0" opacity={0.6 + 0.4 * flick} />
+      <path d="M -12 26 Q -16 46 -12 70" fill="none" stroke="#fff" strokeOpacity={0.45} strokeWidth={4} strokeLinecap="round" />
+      <rect x={-26} y={80} width={52} height={12} rx={5} fill={metal} stroke={shade(metal, -0.4)} strokeWidth={3} />
+    </g>
+  );
+};

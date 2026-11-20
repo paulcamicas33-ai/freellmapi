@@ -6,7 +6,8 @@ Read this before animating anyone.
 `src/cast/Critter.tsx` draws a storybook animal from SVG shapes, about 330 px tall at scale 1,
 origin between the feet on the ground. Props:
 
-- `id` (unique; prefixes its gradient and clip ids), `species`: `fox` | `bunny` | `bear` | `cat`
+- `id` (unique; prefixes its gradient and clip ids), `species`: `fox` | `bunny` | `bear` | `cat` |
+  `hedgehog` (Noisette's species; keep it for her)
 - `look`: `fur`, `belly`, optional `accent` (scarf colour), `eye`, `blush`
 - `x`, `y` (ground point in the layer's px), `scale`, `facing` (1 right, -1 left)
 - `pose`: all optional — `armL`, `armR`, `legL`, `legR` (degrees; 0 = hanging down; a positive
@@ -18,7 +19,11 @@ origin between the feet on the ground. Props:
   raised past 110 degrees is drawn in front of the head so the big head does not hide it).
 
 Put each story character's species, look and scale in `src/cast/cast.ts` so every scene uses the
-same design.
+same design. Noisette's are in `src/cast/mascot.ts`: import them, never copy or edit them.
+
+Held props: `handPosition({ x, y, scale, facing, pose }, "L" | "R")` returns where the hand is, in
+the same coordinates, every frame; put the prop's grip point there (the `Lantern`'s grip is its
+`x, y`). A closed eye (`blink` above 0.85) is drawn as a happy arc, so `blink: 1` reads as a smile.
 
 ## Motion helpers (`src/lib/motion.ts`)
 - `breathe(t, seed)` → sy for idle breathing; `blink(t, seed)` → eyelid; always both, every frame.

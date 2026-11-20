@@ -1,6 +1,9 @@
 {
   "fps": 30,
-  "duration": 6.0,
-  "scenes": [{ "id": "demo", "start": 0.0, "end": 6.0 }],
-  "lines": [{ "id": "l1", "text": "Il était une fois un petit *renard*.", "start": 0.6, "end": 5.2 }]
+  "duration": 8.5,
+  "scenes": [{ "id": "hello", "start": 0.0, "end": 8.5 }],
+  "lines": [
+    { "id": "l1", "text": "Bonjour ! Je suis *Noisette*.", "start": 3.3, "end": 5.6, "speaker": "Noisette" },
+    { "id": "l2", "text": "Une nouvelle histoire ? On essaie *ensemble* ?", "start": 5.9, "end": 8.2, "speaker": "Noisette" }
+  ]
 }

@@ -53,7 +53,7 @@ passes the camera. Clouds and stars drift; trees sway; grass bends. Reuse `Sky`,
 - Stage for silhouettes: characters in three-quarter view, never overlapping faces, eye-lines
   toward each other or toward the motif.
 - 16:9: the ground line the characters stand on sits at about 72–78 % of the height, so their feet
-  stay above the caption card (which covers roughly y 880–1010). Caption card at the bottom. 9:16: characters larger
+  stay above the caption card (which covers roughly y 880–1010). Caption card at the bottom. 9:16 (ground line at about 55–58 % of the height): characters larger
   in the middle band, caption card above the platform UI zone (bottom 470 px stays clear).
 
 ## 6. Type and captions

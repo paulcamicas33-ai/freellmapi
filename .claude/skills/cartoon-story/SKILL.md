@@ -1,6 +1,6 @@
 ---
 name: cartoon-story
-description: Make an animated cartoon story video for children entirely in code (Remotion + SVG), in a glossy graphic storybook style — round animal characters with big expressive eyes, layered parallax landscapes, soft light rays, paper grain, storybook captions — rendered to MP4 in 16:9 and/or 9:16. Use this whenever the user wants a cartoon, a dessin animé, an animated children's story or fairy tale, a bedtime story video, a kids' YouTube/TikTok short with animals, an animated moral or fable, or wants to change, fix or re-render a video made with this skill — even if they only say "une petite histoire animée" or "un cartoon pour enfants". Not for photoreal or cinematic 3D ads (use cinematic-motion) and not for prompts to external AI video generators.
+description: Make an animated cartoon story video for children entirely in code (Remotion + SVG), in a glossy graphic storybook style — round animal characters with big expressive eyes (starring the recurring mascot Noisette, a little hedgehog with a lantern), layered parallax landscapes, soft light rays, paper grain, storybook captions — rendered to MP4 in 16:9 and/or 9:16. Use this whenever the user wants a cartoon, a dessin animé, an animated children's story or fairy tale, a bedtime story video, a kids' YouTube/TikTok short with animals, an animated moral or fable, or wants to change, fix or re-render a video made with this skill — even if they only say "une petite histoire animée" or "un cartoon pour enfants". Not for photoreal or cinematic 3D ads (use cinematic-motion) and not for prompts to external AI video generators.
 ---
 
 # Cartoon story
@@ -16,6 +16,11 @@ shade of the fill, never pure black); soft radial shading on every body; big glo
 highlights; warm light rays and haze; layered hills and trees with depth blur; a paper grain over
 everything. Every frame should survive as a page of a beautiful children's book. Reject your own
 work when it looks like clip-art, a PowerPoint, or shapes sliding around without acting.
+
+**The mascot.** Every film stars Noisette, the skill's recurring character: a little hedgehog
+girl with a green scarf and a glowing lantern, whose line is « On essaie *ensemble* ? ». She is
+the hero or the helper in every story, always drawn from `src/cast/mascot.ts` and never redesigned.
+Read `references/mascot.md` before writing any story.
 
 ## 0. Ground rules
 
@@ -66,8 +71,9 @@ on a mismatch stop and tell the user.
 | package-lock.json | a92264f8a7777bb6fe465756af9abe03aec285942af7dd00f1d51f3eba7fa25f |
 
 `assets/template/` holds the starter project (config, fonts, motion library, camera and parallax
-layers, sky, hills, trees, flowers, stars, the `Critter` character rig, captions, title, sound,
-grain, atmosphere, contact sheet). Copy it; do not rewrite these from scratch.
+layers, sky, hills, trees, flowers, stars, the lantern, the `Critter` character rig with
+`handPosition` for held props, the mascot `NOISETTE` and her model sheet `MascotSheet`, captions,
+title, sound, grain, atmosphere, contact sheet). Copy it; do not rewrite these from scratch.
 
 New project:
 1. Node.js 20 or newer (`node --version`). If missing, ask the user to install Node.js LTS from
@@ -113,7 +119,8 @@ Do the steps in order; each is cheaper than the mistakes it catches.
 
 Ask once, in one short message, only what you cannot decide: the age of the children (default 3–7);
 the story idea or moral (or you invent one); length (default 30 to 45 s, at most 90 s); format
-(16:9 for YouTube/TV, 9:16 for Shorts/Reels/TikTok, or both); the hero (animal, name, colour) if they
+(16:9 for YouTube/TV, 9:16 for Shorts/Reels/TikTok, or both); whether Noisette is the hero or meets
+another hero (default: she is the hero) and, for another hero, its animal, name and colour if they
 care; language on screen (default: the user's language); any audio files they own (music, sound
 effects, their own recorded narration). Decide the rest. Write `docs/BRIEF.md`.
 
@@ -165,7 +172,8 @@ one saturated accent for the motif), the cast table, type sizes, safe zones (16:
 y 80–1000; 9:16 x 60–1020, y 220–1480 — captions sit inside it). Read `references/style.md` before
 writing it and `references/characters.md` before animating anyone.
 
-Render the character sheet before any scene and show it to the user: make a `src/CharacterSheet.tsx`
+Render `MascotSheet` once (Noisette must match it) and the character sheet before any scene, and
+show the character sheet to the user: make a `src/CharacterSheet.tsx`
 lineup with the real cast (the template's version shows four default animals), one still. This is
 the moment to change a colour or a species.
 
