@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Html5Audio, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { Camera, Layer } from "../world/Camera";
 import { Atmosphere } from "../world/Atmosphere";
 import { Grain } from "../world/Grain";
@@ -86,6 +86,34 @@ export const EpisodeFilm: React.FC<{ episode: string }> = ({ episode }) => {
       {ep.lines.map((l) => <Caption key={l.id} t={t} line={l} width={W} height={H} portrait accent="#3f9a5c" />)}
       <Iris t={t} cuts={cuts} />
       <Grain frame={frame} width={W} height={H} strength={0.07} />
+      <EpisodeSound ep={ep} />
     </AbsoluteFill>
+  );
+};
+
+/** Music bed (ducked 5 dB under every caption line, faded in and out) + one Sequence per effect cue. */
+const EpisodeSound: React.FC<{ ep: Episode }> = ({ ep }) => {
+  const total = Math.round(ep.duration * FPS);
+  const dbToGain = (db: number) => Math.min(1, 10 ** (db / 20));
+  return (
+    <>
+      {ep.music ? (
+        <Sequence from={0}>
+          <Html5Audio src={staticFile(`audio/${ep.music.file}`)} volume={(f) => {
+            const t = f / FPS;
+            const talking = ep.lines.some((l) => t > l.start - 0.2 && t < l.end + 0.2);
+            return dbToGain(ep.music!.gainDb - (talking ? 5 : 0)) * Math.min(1, f / 9, (total - f) / 30);
+          }} />
+        </Sequence>
+      ) : null}
+      {(ep.cues ?? []).map((c, i) => {
+        const start = Math.round(c.t * FPS) - Math.round((c.syncAt ?? 0) * FPS);
+        return (
+          <Sequence key={i} from={Math.max(0, start)}>
+            <Html5Audio src={staticFile(`audio/${c.file}`)} volume={dbToGain(c.gainDb ?? -4)} {...(start < 0 ? { trimBefore: -start } : {})} />
+          </Sequence>
+        );
+      })}
+    </>
   );
 };

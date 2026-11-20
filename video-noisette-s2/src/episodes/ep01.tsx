@@ -6,6 +6,7 @@ import { Fruit } from "../engine/props2";
 import { Sparkles } from "../engine/fx";
 import { Bush } from "../world/Props";
 import { arrive, prog } from "../lib/ease";
+import { commonCues } from "../engine/sound";
 
 const lines = [
   { id: "l1", text: "Derrière le buisson, quelqu'un se *cache*…", start: 3.4, end: 6.8 },
@@ -19,6 +20,20 @@ const lines = [
 
 export const ep01: Episode = {
   id: "ep01", season: 2, number: 1, title: "Un nouvel ami", duration: 36, endAt: 27.4, lines,
+  music: { file: "music-day.wav", gainDb: -9 },
+  cues: [
+    ...commonCues(27.4, 36),
+    { file: "sfx-steps.wav", t: 0.2, gainDb: -12 },
+    { file: "sfx-pop.wav", t: 3.6, gainDb: -6 },
+    { file: "sfx-flutter.wav", t: 7.6, gainDb: -8 },
+    { file: "sfx-squeak.wav", t: 8.1, gainDb: -6 },
+    { file: "sfx-boing.wav", t: 11.0, gainDb: -6 },
+    { file: "sfx-pop.wav", t: 14.6, gainDb: -6 },
+    { file: "sfx-chime.wav", t: 14.7, gainDb: -8 },
+    { file: "sfx-whoosh-fast.wav", t: 19.4, gainDb: -10 },
+    { file: "sfx-squeak.wav", t: 22.7, gainDb: -4 },
+    { file: "sfx-sparkle.wav", t: 22.8, gainDb: -8 },
+  ],
   scenes: [{
     id: "all", start: 0, end: 36, place: "meadow", zoom: [[0, 1], [11, 1.05], [36, 1.04]],
     world: (t) => {

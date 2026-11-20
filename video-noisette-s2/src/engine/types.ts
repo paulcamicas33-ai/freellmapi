@@ -21,4 +21,7 @@ export type Episode = {
   scenes: Scene[]; lines: Line[];
   /** end card starts here (comment call) */
   endAt: number;
+  /** sound: one music bed + timed effects (files in public/audio/) */
+  music?: { file: string; gainDb: number };
+  cues?: { file: string; t: number; syncAt?: number; gainDb?: number }[];
 };
