@@ -104,10 +104,15 @@ const EpisodeSound: React.FC<{ ep: Episode }> = ({ ep }) => {
           <Html5Audio src={staticFile(`audio/${ep.music.file}`)} volume={(f) => {
             const t = f / FPS;
             const talking = ep.lines.some((l) => t > l.start - 0.2 && t < l.end + 0.2);
-            return dbToGain(ep.music!.gainDb - (talking ? 5 : 0)) * Math.min(1, f / 9, (total - f) / 30);
+            return dbToGain(ep.music!.gainDb - (talking ? (ep.voicePrefix ? 9 : 5) : 0)) * Math.min(1, f / 9, (total - f) / 30);
           }} />
         </Sequence>
       ) : null}
+      {ep.voicePrefix ? ep.lines.map((l) => (
+        <Sequence key={`v-${l.id}`} from={Math.round((l.start + 0.15) * FPS)}>
+          <Html5Audio src={staticFile(`audio/${ep.voicePrefix}-${l.id}.wav`)} volume={1} />
+        </Sequence>
+      )) : null}
       {(ep.cues ?? []).map((c, i) => {
         const start = Math.round(c.t * FPS) - Math.round((c.syncAt ?? 0) * FPS);
         return (

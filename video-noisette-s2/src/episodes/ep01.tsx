@@ -21,6 +21,7 @@ const lines = [
 export const ep01: Episode = {
   id: "ep01", season: 2, number: 1, title: "Un nouvel ami", duration: 36, endAt: 27.4, lines,
   music: { file: "music-day.wav", gainDb: -9 },
+  voicePrefix: "voice-s2ep01",
   cues: [
     ...commonCues(27.4, 36),
     { file: "sfx-steps.wav", t: 0.2, gainDb: -12 },

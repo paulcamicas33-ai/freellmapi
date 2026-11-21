@@ -1,6 +1,6 @@
 ---
 name: cartoon-sound
-description: Create original, royalty-free sound for videos entirely from code — cartoon sound effects (pop, boing, ding, chime, sparkle, whoosh, plouf, splat, squeak, hic, ta-da, riser, bubbles, footsteps, typing, xylophone notes) and gentle music beds (day, dance, night lullaby, snow) — with a Python standard-library synthesizer (nothing to install, nothing downloaded), then place, mix and master them in a Remotion video at -14 LUFS. Use this whenever a video made with cartoon-story or cinematic-motion needs sound or music and the user has no audio files, or the user asks to "add sound", "mettre du son", "bruitages", "une musique", "sound effects", even if they don't name this skill. Not for voices or singing (no speech synthesis here) and never for copying an existing song.
+description: Create original, royalty-free sound for videos entirely from code — cartoon sound effects (pop, boing, ding, chime, sparkle, whoosh, plouf, splat, squeak, hic, ta-da, riser, bubbles, footsteps, typing, xylophone notes) and gentle music beds (day, dance, night lullaby, snow) — with a Python standard-library synthesizer (nothing to install, nothing downloaded), then place, mix and master them in a Remotion video at -14 LUFS. Use this whenever a video made with cartoon-story or cinematic-motion needs sound or music and the user has no audio files, or the user asks to "add sound", "mettre du son", "bruitages", "une musique", "sound effects", even if they don't name this skill. Also gives the characters French voices with Piper (offline text-to-speech, installed once with the user's OK). Never for singing or copying an existing song.
 ---
 
 # Cartoon sound
@@ -14,7 +14,8 @@ strings, bells, a small reverb), so it is original and free of rights. No instal
   paths inside the project. Never `pip install`, never fetch audio from the web.
 - Never imitate or rebuild a recognisable existing song, jingle or melody (no « Joyeux
   anniversaire », no famous lullaby): the music beds are generated chord loops and melodies.
-- No voices: the synthesizer makes no speech. A voice comes only from the user's own recording.
+- Voices come from Piper (section 1b) or from the user's own recording, never from a cloned real
+  person's voice.
 - Deterministic: same command, same file. Re-running replaces only files this skill made.
 - Names follow the cartoon-story patterns (`^[a-z0-9][a-z0-9-]{0,39}$` + `.wav`).
 
@@ -46,6 +47,25 @@ Style guide for music: `day` (ukulele + bells, 112 BPM) for meadows and beaches;
 light beat, 124 BPM) for dance and races; `night` (music box lullaby, 3/4) for night and bedtime;
 `snow` (soft pad + bells) for winter.
 
+## 1b. Voices (Piper, offline)
+Install once, after telling the user in one line and getting their OK (about 50 MB + 60–75 MB per
+voice): a virtual environment `.tools/piper/` in the current folder (`python3 -m venv .tools/piper`
+then `.tools/piper/bin/pip install piper-tts`), and the French voices from
+`https://huggingface.co/rhasspy/piper-voices/resolve/main/fr/fr_FR/<name>/medium/<file>` into
+`.tools/voices/`: `fr_FR-tom-medium` (narrator), `fr_FR-siwis-medium` (Noisette),
+`fr_FR-upmc-medium` (speaker 0 « jessica », Pistache) — each `.onnx` and `.onnx.json`. The
+network needs `huggingface.co` and its file server (`us.aws.cdn.hf.co`). Put a `.gitignore`
+containing `*` inside `.tools/` (never edit the user's own `.gitignore`).
+
+Write the episode's caption lines to a JSON file (`[{id, text, speaker?}]`, the same text as the
+captions), then:
+`python3 -I '<skill>/scripts/voice.py' '.tools/piper/bin/piper' '.tools/voices' '<lines.json>' 'public/audio' 'voice-<episode>'`
+It prints each line's length: every one must fit its caption window (end - start); if one does
+not, shorten the line or widen its window and re-time. Profiles (in `voice.py`): narrator = Tom,
+Noisette = Siwis raised ×1.18 (a little girl), Pistache = Jessica raised ×1.33 (a small mouse). Pitch
+is raised without changing speed. In the season engine set `voicePrefix: "voice-<episode>"`: each
+line plays 0.15 s after its caption appears, and the music ducks 9 dB under voices.
+
 ## 2. Place them
 Cue every effect from the same times the scenes use (the caption and action times of the
 storyboard), so picture and sound cannot drift. `syncAt` is the moment inside the file that must
@@ -54,7 +74,8 @@ land on the action: 0 for every effect here except `sfx-riser` (its length, 1.6 
   `cues: [{ file, t, syncAt?, gainDb? }]`; `engine/sound.ts` gives `commonCues(endAt, duration)`
   (badge ding, end-card ta-da, typing bubble) and `countCues(times)` (rising xylophone notes).
   The music is ducked 5 dB under every caption automatically.
-- Starting levels that work: music -9 dB; main hits -4 to -6 dB; ambience and steps -10 to -14 dB.
+- Starting levels that work (the engine also trims every effect by 9 dB, the user found them too
+  loud): voices 0 dB; music -9 dB; main hits -4 to -6 dB; ambience and steps -10 to -16 dB.
 
 ## 3. Mix and master
 Render, then master exactly like the cinematic-motion skill, Step 9: loudnorm pass 1 (measure),

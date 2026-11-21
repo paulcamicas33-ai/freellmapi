@@ -24,4 +24,6 @@ export type Episode = {
   /** sound: one music bed + timed effects (files in public/audio/) */
   music?: { file: string; gainDb: number };
   cues?: { file: string; t: number; syncAt?: number; gainDb?: number }[];
+  /** voice files <voicePrefix>-<lineId>.wav, each starting just after its caption appears */
+  voicePrefix?: string;
 };
