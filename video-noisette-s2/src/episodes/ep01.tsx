@@ -30,7 +30,7 @@ export const ep01: Episode = {
     { file: "sfx-boing.wav", t: 11.0, gainDb: -6 },
     { file: "sfx-pop.wav", t: 14.6, gainDb: -6 },
     { file: "sfx-chime.wav", t: 14.7, gainDb: -8 },
-    { file: "sfx-whoosh-fast.wav", t: 19.4, gainDb: -10 },
+    { file: "sfx-whoosh-fast.wav", t: 19.4, gainDb: -16 },
     { file: "sfx-squeak.wav", t: 22.7, gainDb: -4 },
     { file: "sfx-sparkle.wav", t: 22.8, gainDb: -8 },
   ],

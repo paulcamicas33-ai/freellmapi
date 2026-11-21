@@ -12,6 +12,8 @@ import { W, H, Episode } from "./types";
 import { EPISODES } from "../episodes";
 
 const FPS = 30;
+/** All effects sit this many dB under their cue level, so they stay discreet under music and voice. */
+const SFX_TRIM_DB = -9;
 
 const ink = (dark: boolean) => dark
   ? { color: "#fff8ec", textShadow: "0 5px 0 #2b3466, 0 14px 30px rgba(10,15,40,0.8)", accent: "#9be3a8" }
@@ -110,7 +112,7 @@ const EpisodeSound: React.FC<{ ep: Episode }> = ({ ep }) => {
         const start = Math.round(c.t * FPS) - Math.round((c.syncAt ?? 0) * FPS);
         return (
           <Sequence key={i} from={Math.max(0, start)}>
-            <Html5Audio src={staticFile(`audio/${c.file}`)} volume={dbToGain(c.gainDb ?? -4)} {...(start < 0 ? { trimBefore: -start } : {})} />
+            <Html5Audio src={staticFile(`audio/${c.file}`)} volume={dbToGain((c.gainDb ?? -4) + SFX_TRIM_DB)} {...(start < 0 ? { trimBefore: -start } : {})} />
           </Sequence>
         );
       })}
