@@ -26,4 +26,6 @@ export type Episode = {
   cues?: { file: string; t: number; syncAt?: number; gainDb?: number }[];
   /** voice files <voicePrefix>-<lineId>.wav, each starting just after its caption appears */
   voicePrefix?: string;
+  /** other on-screen words that are read aloud (pop words): file <voicePrefix>-<id>.wav at time t */
+  extraVoices?: { id: string; text: string; t: number; speaker?: string }[];
 };

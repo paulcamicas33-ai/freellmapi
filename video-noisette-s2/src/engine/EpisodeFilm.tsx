@@ -108,9 +108,9 @@ const EpisodeSound: React.FC<{ ep: Episode }> = ({ ep }) => {
           }} />
         </Sequence>
       ) : null}
-      {ep.voicePrefix ? ep.lines.map((l) => (
-        <Sequence key={`v-${l.id}`} from={Math.round((l.start + 0.15) * FPS)}>
-          <Html5Audio src={staticFile(`audio/${ep.voicePrefix}-${l.id}.wav`)} volume={1} />
+      {ep.voicePrefix ? voiceTrack(ep).map((v) => (
+        <Sequence key={`v-${v.id}`} from={Math.round(v.t * FPS)}>
+          <Html5Audio src={staticFile(`audio/${ep.voicePrefix}-${v.id}.wav`)} volume={1} />
         </Sequence>
       )) : null}
       {(ep.cues ?? []).map((c, i) => {
@@ -124,3 +124,14 @@ const EpisodeSound: React.FC<{ ep: Episode }> = ({ ep }) => {
     </>
   );
 };
+
+/**
+ * Everything written on screen is also read aloud, starting as the text appears: the title card,
+ * every caption, every pop word listed in extraVoices, and the end card.
+ */
+export const voiceTrack = (ep: Episode) => [
+  { id: "title", text: `Épisode ${ep.number} : ${ep.title} !`, t: 0.2 },
+  ...ep.lines.map((l) => ({ id: l.id, text: l.text, t: l.start, speaker: l.speaker })),
+  ...(ep.extraVoices ?? []),
+  { id: "endcard", text: "Quelle aventure ensuite ? Écris ton idée en commentaire !", t: ep.endAt + 0.15, speaker: "Noisette" },
+];

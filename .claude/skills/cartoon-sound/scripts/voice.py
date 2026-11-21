@@ -19,10 +19,13 @@ import wave
 
 PROFILES = {
     # model file, speaker id or None, pitch factor k, base speed (length scale, >1 = slower)
-    "narrateur": ("fr_FR-tom-medium.onnx", None, 1.0, 1.05),
-    "Noisette": ("fr_FR-siwis-medium.onnx", None, 1.18, 1.0),
-    "Pistache": ("fr_FR-upmc-medium.onnx", 0, 1.33, 1.0),
+    # Childlike and lively: every voice is raised and a little quicker; Piper's variation is raised
+    # (noise scales) so the reading is less flat.
+    "narrateur": ("fr_FR-upmc-medium.onnx", 0, 1.12, 0.95),   # a warm young storyteller
+    "Noisette": ("fr_FR-siwis-medium.onnx", None, 1.32, 0.92),  # a little girl
+    "Pistache": ("fr_FR-tom-medium.onnx", None, 1.55, 0.9),     # a small boy mouse
 }
+EXPRESSIVE = ["--noise-scale", "0.8", "--noise-w-scale", "1.0"]
 NAME = re.compile(r"^[a-z0-9][a-z0-9-]{0,39}$")
 
 
@@ -66,7 +69,7 @@ def main(argv):
         model, spk, k, ls = PROFILES.get(who, PROFILES["narrateur"])
         with tempfile.TemporaryDirectory() as tmp:
             raw = os.path.join(tmp, "raw.wav")
-            cmd = [piper, "-m", os.path.join(voices, model), "-f", raw, "--length-scale", str(ls * k), "--sentence-silence", "0.15"]
+            cmd = [piper, "-m", os.path.join(voices, model), "-f", raw, "--length-scale", str(ls * k), "--sentence-silence", "0.1"] + EXPRESSIVE
             if spk is not None:
                 cmd += ["-s", str(spk)]
             subprocess.run(cmd, input=clean(line["text"]).encode("utf-8"), check=True, capture_output=True)

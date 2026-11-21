@@ -60,11 +60,15 @@ containing `*` inside `.tools/` (never edit the user's own `.gitignore`).
 Write the episode's caption lines to a JSON file (`[{id, text, speaker?}]`, the same text as the
 captions), then:
 `python3 -I '<skill>/scripts/voice.py' '.tools/piper/bin/piper' '.tools/voices' '<lines.json>' 'public/audio' 'voice-<episode>'`
-It prints each line's length: every one must fit its caption window (end - start); if one does
-not, shorten the line or widen its window and re-time. Profiles (in `voice.py`): narrator = Tom,
-Noisette = Siwis raised ×1.18 (a little girl), Pistache = Jessica raised ×1.33 (a small mouse). Pitch
-is raised without changing speed. In the season engine set `voicePrefix: "voice-<episode>"`: each
-line plays 0.15 s after its caption appears, and the music ducks 9 dB under voices.
+It prints each line's length. **Everything written on screen is read aloud, starting the moment
+it appears** (the user asked for this): the title card (narrator), every caption, every pop word
+(list them in the episode's `extraVoices`, with the same words as on screen) and the end card
+(Noisette). `voiceTrack(ep)` in the season engine builds that list; write it to the JSON with its
+times and check that no voice runs into the next one (keep 0.1 s of air), else shorten or re-time.
+Profiles (in `voice.py`, childlike and lively as the user asked): narrator = Jessica ×1.12,
+Noisette = Siwis ×1.32 (a little girl), Pistache = Tom ×1.55 (a small boy mouse), all a bit quicker,
+with Piper's variation raised. Pitch is raised without changing speed. In the season engine set
+`voicePrefix: "voice-<episode>"`; the music ducks 9 dB under voices.
 
 ## 2. Place them
 Cue every effect from the same times the scenes use (the caption and action times of the

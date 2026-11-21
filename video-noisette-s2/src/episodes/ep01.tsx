@@ -22,6 +22,7 @@ export const ep01: Episode = {
   id: "ep01", season: 2, number: 1, title: "Un nouvel ami", duration: 36, endAt: 27.4, lines,
   music: { file: "music-day.wav", gainDb: -9 },
   voicePrefix: "voice-s2ep01",
+  extraVoices: [{ id: "bonjour", text: "Bonjour !", t: 16.9, speaker: "Noisette" }],
   cues: [
     ...commonCues(27.4, 36),
     { file: "sfx-steps.wav", t: 0.2, gainDb: -12 },
@@ -29,8 +30,8 @@ export const ep01: Episode = {
     { file: "sfx-flutter.wav", t: 7.6, gainDb: -8 },
     { file: "sfx-squeak.wav", t: 8.1, gainDb: -6 },
     { file: "sfx-boing.wav", t: 11.0, gainDb: -6 },
-    { file: "sfx-pop.wav", t: 14.6, gainDb: -6 },
-    { file: "sfx-chime.wav", t: 14.7, gainDb: -8 },
+    { file: "sfx-pop.wav", t: 16.9, gainDb: -6 },
+    { file: "sfx-chime.wav", t: 17.0, gainDb: -8 },
     { file: "sfx-whoosh-fast.wav", t: 19.4, gainDb: -16 },
     { file: "sfx-squeak.wav", t: 22.7, gainDb: -4 },
     { file: "sfx-sparkle.wav", t: 22.8, gainDb: -8 },
@@ -63,7 +64,7 @@ export const ep01: Episode = {
           {share > 0 ? <Fruit kind="cheese" x={500 + share * 120} y={GROUND - 260 + share * 40} s={1.3} /> : null}
           {t > 18.6 && share < 1 ? <Fruit kind="apple" x={420} y={GROUND - 300} s={1.1} /> : null}
           <PopWord t={t} at={3.6} x={760} y={GROUND - 520} text="?" size={140} color="#ff9f43" />
-          <PopWord t={t} at={14.6} dur={1.4} x={540} y={GROUND - 760} text="BONJOUR !" size={100} color="#4fb36c" />
+          <PopWord t={t} at={16.9} dur={1.4} x={540} y={GROUND - 760} text="BONJOUR !" size={100} color="#4fb36c" />
           <Sparkles t={t} at={22.7} x={540} y={GROUND - 420} n={18} spread={300} color="#ff9f43" />
           <Actor id="noi" who={NOI} t={t} lines={lines} x={[[0, 100], [2.8, 330]]} facing={[[0, 1]]}
             beats={[
