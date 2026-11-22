@@ -18,7 +18,7 @@ const lines = [
 const FOOD: { kind: "apple" | "strawberry" | "banana" | "cheese"; at: number }[] = [
   { kind: "apple", at: 7.4 }, { kind: "strawberry", at: 8.6 }, { kind: "banana", at: 9.8 }, { kind: "cheese", at: 11.0 },
 ];
-const SPLIT = [21.0, 21.8, 22.6, 23.4];
+const SPLIT = [21.3, 22.1, 22.9, 23.7];
 
 export const ep06: Episode = {
   id: "ep06", season: 2, number: 6, title: "Le pique-nique", duration: 36, endAt: 29.4, lines,

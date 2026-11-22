@@ -10,7 +10,7 @@ const lines = [
   { id: "l1", text: "On joue à *cache-cache* ! Noisette compte.", start: 3.4, end: 6.8 },
   { id: "l2", text: "Compte avec moi : 1, 2, 3, 4, *5* !", start: 7.2, end: 12.4, speaker: "Noisette" },
   { id: "l3", text: "Où est Pistache ? Tu le *vois* ?", start: 12.8, end: 16.4, speaker: "Noisette" },
-  { id: "l4", text: "Sa *queue* dépasse du buisson !", start: 16.8, end: 20.4 },
+  { id: "l4", text: "On voit sa *queue* derrière le buisson !", start: 16.8, end: 20.4 },
   { id: "l5", text: "Trouvé ! À toi de *compter* maintenant !", start: 20.8, end: 24.6, speaker: "Noisette" },
   { id: "l6", text: "Moi *aussi* je veux encore jouer !", start: 25.0, end: 28.6, speaker: "Pistache" },
   { id: "l7", text: "À très *vite* !", start: 33.3, end: 35.9, speaker: "Noisette" },

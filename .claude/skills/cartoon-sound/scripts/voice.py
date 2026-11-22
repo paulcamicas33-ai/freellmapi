@@ -38,6 +38,9 @@ NAME = re.compile(r"^[a-z0-9][a-z0-9-]{0,39}$")
 # Only the voice text changes; captions keep the normal spelling.
 PRONOUNCE = {
     "hoquet": "ho-quet",
+    "cerf-volant": "cerfvolant",
+
+
 }
 
 

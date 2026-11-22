@@ -74,6 +74,25 @@ airy room, the same loudness for every line (RMS -22 dB) and a soft ceiling. Kee
 unless the user asks. Each file ends with a 0.35 s room tail: allow it when checking overlaps. Pitch is raised without changing speed. In the season engine set
 `voicePrefix: "voice-<episode>"`; the music ducks 9 dB under voices.
 
+## 1c. Listen before delivering (Whisper) — never skip
+Claude cannot hear. The user found words swallowed (« a le hoquet » → « a l'hoquet »), an ugly pitch
+rise after « … », and muffled consonants — none of which volume and length checks can catch. So
+every voice line is checked by an ear before any render:
+- Install once, with the user's OK: `python3 -m venv .tools/whisper` then
+  `.tools/whisper/bin/pip install faster-whisper`; the `small` model downloads into
+  `.tools/whisper-models` on first use (needs `huggingface.co` and its file server).
+- Generate AND check in one go (it retries each failing line up to 4 times — Piper varies a
+  little between runs — and keeps the best take):
+  `.tools/whisper/bin/python -I '<skill>/scripts/voice_qc.py' '.tools/piper/bin/piper' '.tools/voices' '.tools/whisper-models' '<lines.json>' 'public/audio' 'voice-<episode>'`
+  `check.py` alone re-checks existing files.
+- A line passes when Whisper's transcript matches the text (score ≥ 0.8, no content word missing,
+  near-homophones such as « hockey » for « hoquet » accepted) and there is no sustained pitch jump
+  of more than 11 semitones. One-word lines (« Un ! ») are too short to grade.
+- When a line still fails: respell the word for the voice in `PRONOUNCE` (voice.py) — e.g.
+  « hoquet » → « ho-quet », « cerf-volant » → « cerfvolant » — or rephrase the caption. Never use
+  « … » in a line the voice must read naturally (it is said as a full stop now). Read the
+  remaining failures yourself: Whisper's own mistakes on names and homophones are not voice faults.
+
 ## 2. Place them
 Cue every effect from the same times the scenes use (the caption and action times of the
 storyboard), so picture and sound cannot drift. `syncAt` is the moment inside the file that must
