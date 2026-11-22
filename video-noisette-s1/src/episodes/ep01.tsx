@@ -10,7 +10,7 @@ const MOON = { x: 290, y: 650, r: 115 };
 
 const lines = [
   { id: "l1", text: "Cette nuit, la Lune a le *hoquet* !", start: 3.4, end: 6.5 },
-  { id: "l2", text: "Pauvre Lune… On va essayer de la *guérir* !", start: 6.9, end: 10.4, speaker: "Noisette" },
+  { id: "l2", text: "Ma pauvre Lune, on va te *guérir* !", start: 6.9, end: 10.4, speaker: "Noisette" },
   { id: "l3", text: "Et si on lui faisait peur ? *Bouh* !", start: 11.0, end: 14.8, speaker: "Noisette" },
   { id: "l4", text: "Retiens ton souffle avec nous : 1, 2, *3* !", start: 15.4, end: 20.3, speaker: "Noisette" },
   { id: "l5", text: "Plus de hoquet ! La Lune *brille* de joie.", start: 21.2, end: 25.0 },

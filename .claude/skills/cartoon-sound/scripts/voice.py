@@ -22,7 +22,7 @@ PROFILES = {
     # model file, speaker id or None, pitch factor k, base speed (length scale, >1 = slower)
     # Childlike and lively: every voice is raised and a little quicker; Piper's variation is raised
     # (noise scales) so the reading is less flat.
-    "narrateur": ("fr_FR-upmc-medium.onnx", 0, 1.1, 1.0),     # a warm young storyteller
+    "narrateur": ("fr_FR-siwis-medium.onnx", None, 1.0, 1.05),  # a soft storyteller (clearest in the Whisper test)
     "Noisette": ("fr_FR-siwis-medium.onnx", None, 1.25, 1.18),  # a little girl, speaking slowly and calmly
     "Pistache": ("fr_FR-tom-medium.onnx", None, 1.42, 0.95),    # a small boy mouse
     "Pipo": ("fr_FR-tom-medium.onnx", None, 1.18, 1.05),        # a gentle little bear
@@ -34,8 +34,20 @@ EXPRESSIVE = ["--noise-scale", "0.55", "--noise-w-scale", "0.6"]
 NAME = re.compile(r"^[a-z0-9][a-z0-9-]{0,39}$")
 
 
+# How Piper should SAY some words (found with check.py: Whisper heard the plain spelling wrong).
+# Only the voice text changes; captions keep the normal spelling.
+PRONOUNCE = {
+    "hoquet": "ho-quet",
+}
+
+
 def clean(text):
     text = text.replace("*", "")
+    # « … » makes Piper's pitch jump up on the next word: say it as a plain full stop
+    text = text.replace("…", ".").replace("...", ".")
+    for word, said in PRONOUNCE.items():
+        text = re.sub(rf"\b{word}\b", said, text, flags=re.IGNORECASE)
+    text = re.sub(r"\.\s*\.", ".", text)
     return re.sub(r"\s+", " ", text).strip()
 
 
@@ -63,7 +75,7 @@ def resample(x, k):
     return out
 
 
-def soft_room(x, rate, mix=0.14):
+def soft_room(x, rate, mix=0.08):
     """A small, soft, airy room (gives the 'angelic' softness the user asked for)."""
     n = len(x)
     tail = int(0.35 * rate)
@@ -87,9 +99,9 @@ def soften(samples, rate, k):
     a natural fade at the end of every line, the same loudness for every line and a soft ceiling."""
     x = [v / 32768.0 for v in samples]
     if k != 1.0:
-        x = lowpass(x, rate, min(6500.0, 0.42 * rate / k), 3)
+        x = lowpass(x, rate, min(9000.0, 0.45 * rate / k), 3)
         x = resample(x, k)
-    x = lowpass(x, rate, 6000.0, 2)
+    x = lowpass(x, rate, 9000.0, 1)  # a light touch: stronger filters muffled the consonants (Whisper test)
     # trim the silence Piper leaves at the end, so the fade lands on the last syllable
     thr = 0.01 * max(1e-9, max(abs(v) for v in x))
     endi = len(x)
