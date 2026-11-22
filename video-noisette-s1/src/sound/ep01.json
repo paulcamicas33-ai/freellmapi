@@ -1,0 +1,112 @@
+{
+ "music": {
+  "file": "music-night.wav",
+  "gainDb": -9
+ },
+ "prefix": "voice-s1ep01",
+ "cues": [
+  {
+   "file": "sfx-steps.wav",
+   "t": 0.2,
+   "gainDb": -12
+  },
+  {
+   "file": "sfx-hic.wav",
+   "t": 3.0,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-hic.wav",
+   "t": 4.6,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-hic.wav",
+   "t": 6.2,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-hic.wav",
+   "t": 7.8,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-hic.wav",
+   "t": 9.4,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-hic.wav",
+   "t": 11.0,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-hic.wav",
+   "t": 12.6,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-hic.wav",
+   "t": 14.25,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-hic.wav",
+   "t": 15.7,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-pop.wav",
+   "t": 13.6,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-shimmer.wav",
+   "t": 20.5,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-chime.wav",
+   "t": 20.6,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-xylo-1.wav",
+   "t": 17.4,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-2.wav",
+   "t": 18.4,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-3.wav",
+   "t": 19.4,
+   "gainDb": -5
+  }
+ ],
+ "say": {
+  "l4": "Retiens ton souffle avec nous !"
+ },
+ "extra": [
+  {
+   "id": "n1",
+   "text": "Un !",
+   "t": 17.4,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n2",
+   "text": "Deux !",
+   "t": 18.4,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n3",
+   "text": "Trois !",
+   "t": 19.4,
+   "speaker": "Noisette"
+  }
+ ]
+}

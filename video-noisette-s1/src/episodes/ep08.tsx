@@ -11,8 +11,8 @@ const lines = [
   { id: "l3", text: "Plouf ! Plouf ! Que c'est *rigolo* !", start: 11.2, end: 15.0 },
   { id: "l4", text: "La pluie s'arrête… regarde *là-haut* !", start: 16.4, end: 19.6, speaker: "Noisette" },
   { id: "l5", text: "Rouge, orange, jaune, vert, bleu, *violet* !", start: 20.0, end: 25.2, speaker: "Noisette" },
-  { id: "l6", text: "Après la pluie… vient l'*arc-en-ciel* !", start: 25.6, end: 29.0 },
-  { id: "l7", text: "À très *vite* !", start: 31.8, end: 35.6, speaker: "Noisette" },
+  { id: "l6", text: "Après la pluie… vient l'*arc-en-ciel* !", start: 26.4, end: 29.2 },
+  { id: "l7", text: "À très *vite* !", start: 33.1, end: 35.6, speaker: "Noisette" },
 ];
 const SPLASH = [11.6, 12.6, 13.6, 14.4];
 const COLORS: [string, string][] = [["ROUGE", "#ff6b6b"], ["ORANGE", "#ffa94d"], ["JAUNE", "#ffd43b"], ["VERT", "#69db7c"], ["BLEU", "#4dabf7"], ["VIOLET", "#9775fa"]];
@@ -59,7 +59,7 @@ export const ep08: Episode = {
           {cast(t)}
         </g>
       ),
-      overlay: (t) => <CountUp t={t} items={COLORS.map(([w, c], i) => ({ at: 20.3 + i * 0.85, text: w, color: c, size: 150 }))} y={330} />,
+      overlay: (t) => <CountUp t={t} items={COLORS.map(([w, c], i) => ({ at: 20.3 + i * 1.0, text: w, color: c, size: 150 }))} y={330} />,
     },
   ],
 };

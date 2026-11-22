@@ -8,11 +8,11 @@ import { keys } from "../lib/ease";
 const lines = [
   { id: "l1", text: "Aujourd'hui, c'est la grande *course* !", start: 3.4, end: 6.8 },
   { id: "l2", text: "Prêts ? On compte : 3, 2, *1* !", start: 7.2, end: 10.6, speaker: "Noisette" },
-  { id: "l3", text: "Lili l'escargot avance tout *doucement*…", start: 11.4, end: 15.0 },
-  { id: "l4", text: "Attends-moi ! On essaie *ensemble* ?", start: 15.4, end: 19.0, speaker: "Noisette" },
+  { id: "l3", text: "Lili l'escargot avance tout *doucement*…", start: 11.8, end: 15.0 },
+  { id: "l4", text: "Je t'attends ! On avance *ensemble* ?", start: 15.4, end: 19.0, speaker: "Noisette" },
   { id: "l5", text: "Ils avancent côte à côte, pas à *pas*.", start: 19.4, end: 23.4 },
-  { id: "l6", text: "Le plus beau, c'est d'arriver *ensemble* !", start: 24.4, end: 28.4, speaker: "Noisette" },
-  { id: "l7", text: "À très *vite* !", start: 31.6, end: 35.6, speaker: "Noisette" },
+  { id: "l6", text: "Le plus beau, c'est d'arriver *ensemble* !", start: 25.1, end: 28.8, speaker: "Noisette" },
+  { id: "l7", text: "À très *vite* !", start: 32.7, end: 35.6, speaker: "Noisette" },
 ];
 const FINISH = 900;
 

@@ -12,7 +12,7 @@ const lines = [
   { id: "l4", text: "Des fruits, de la crème… un *nouveau* gâteau !", start: 15.2, end: 19.0 },
   { id: "l5", text: "Souffle avec Lou : 1, 2, 3… *Fffff* !", start: 19.4, end: 23.4, speaker: "Noisette" },
   { id: "l6", text: "Un gâteau raté, ça se *répare* entre amis.", start: 23.8, end: 27.6 },
-  { id: "l7", text: "Joyeux anniversaire, Lou ! À très *vite* !", start: 31.6, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "Joyeux anniversaire, Lou ! À très *vite* !", start: 32.0, end: 35.6, speaker: "Noisette" },
 ];
 
 export const ep07: Episode = {

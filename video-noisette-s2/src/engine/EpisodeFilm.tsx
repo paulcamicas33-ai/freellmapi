@@ -10,6 +10,7 @@ import { Backdrop, PALETTES } from "./places";
 import { Iris } from "./fx";
 import { W, H, Episode } from "./types";
 import { EPISODES } from "../episodes";
+import { commonCues } from "./sound";
 
 const FPS = 30;
 /** All effects sit this many dB under their cue level, so they stay discreet under music and voice. */
@@ -93,27 +94,29 @@ export const EpisodeFilm: React.FC<{ episode: string }> = ({ episode }) => {
   );
 };
 
-/** Music bed (ducked 5 dB under every caption line, faded in and out) + one Sequence per effect cue. */
+/** Music bed (ducked under every voice), every effect cue, and the voices. */
 const EpisodeSound: React.FC<{ ep: Episode }> = ({ ep }) => {
+  const snd = ep.sound;
+  if (!snd) return null;
   const total = Math.round(ep.duration * FPS);
   const dbToGain = (db: number) => Math.min(1, 10 ** (db / 20));
+  const voices = voiceTrack(ep);
+  const cues = [...commonCues(ep.endAt, ep.duration), ...snd.cues];
   return (
     <>
-      {ep.music ? (
-        <Sequence from={0}>
-          <Html5Audio src={staticFile(`audio/${ep.music.file}`)} volume={(f) => {
-            const t = f / FPS;
-            const talking = ep.lines.some((l) => t > l.start - 0.2 && t < l.end + 0.2);
-            return dbToGain(ep.music!.gainDb - (talking ? (ep.voicePrefix ? 9 : 5) : 0)) * Math.min(1, f / 9, (total - f) / 30);
-          }} />
-        </Sequence>
-      ) : null}
-      {ep.voicePrefix ? voiceTrack(ep).map((v) => (
+      <Sequence from={0}>
+        <Html5Audio src={staticFile(`audio/${snd.music.file}`)} volume={(f) => {
+          const t = f / FPS;
+          const talking = voices.some((v) => t > v.t - 0.15 && t < v.t + 2.4);
+          return dbToGain(snd.music.gainDb - (talking ? 9 : 0)) * Math.min(1, f / 9, (total - f) / 30);
+        }} />
+      </Sequence>
+      {voices.map((v) => (
         <Sequence key={`v-${v.id}`} from={Math.round(v.t * FPS)}>
-          <Html5Audio src={staticFile(`audio/${ep.voicePrefix}-${v.id}.wav`)} volume={1} />
+          <Html5Audio src={staticFile(`audio/${snd.prefix}-${v.id}.wav`)} volume={1} />
         </Sequence>
-      )) : null}
-      {(ep.cues ?? []).map((c, i) => {
+      ))}
+      {cues.map((c, i) => {
         const start = Math.round(c.t * FPS) - Math.round((c.syncAt ?? 0) * FPS);
         return (
           <Sequence key={i} from={Math.max(0, start)}>
@@ -127,11 +130,16 @@ const EpisodeSound: React.FC<{ ep: Episode }> = ({ ep }) => {
 
 /**
  * Everything written on screen is also read aloud, starting as the text appears: the title card,
- * every caption, every pop word listed in extraVoices, and the end card.
+ * every caption (or its `say` version), every extra word (numbers, colours, meaningful pop words),
+ * and the end card.
  */
-export const voiceTrack = (ep: Episode) => [
-  { id: "title", text: `Épisode ${ep.number} : ${ep.title} !`, t: 0.2 },
-  ...ep.lines.map((l) => ({ id: l.id, text: l.text, t: l.start, speaker: l.speaker })),
-  ...(ep.extraVoices ?? []),
-  { id: "endcard", text: "Quelle aventure ensuite ? Écris ton idée en commentaire !", t: ep.endAt + 0.15, speaker: "Noisette" },
-];
+export const voiceTrack = (ep: Episode) => {
+  const snd = ep.sound;
+  const say = snd?.say ?? {};
+  return [
+    { id: "title", text: `Épisode ${ep.number} : ${ep.title} !`, t: 0.2 } as { id: string; text: string; t: number; speaker?: string },
+    ...ep.lines.filter((l) => say[l.id] !== "").map((l) => ({ id: l.id, text: say[l.id] ?? l.text, t: l.start, speaker: l.speaker })),
+    ...(snd?.extra ?? []),
+    { id: "endcard", text: "Quelle aventure ensuite ? Écris ton idée en commentaire !", t: ep.endAt + 0.15, speaker: "Noisette" },
+  ].sort((a, b) => a.t - b.t);
+};

@@ -1,6 +1,6 @@
-import type { Episode } from "./types";
+import type { Cue as EpCue } from "./types";
 
-type Cue = NonNullable<Episode["cues"]>[number];
+type Cue = EpCue;
 
 /** Cues every episode shares: badge ding, end-card ta-da, the typing bubble until the end. */
 export const commonCues = (endAt: number, duration: number): Cue[] => {

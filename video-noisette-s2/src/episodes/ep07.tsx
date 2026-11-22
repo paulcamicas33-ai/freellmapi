@@ -11,9 +11,9 @@ const lines = [
   { id: "l2", text: "On saute ! Saute avec *nous* !", start: 7.2, end: 10.8 },
   { id: "l3", text: "On tape des *mains* : clap, clap, clap !", start: 11.2, end: 14.8 },
   { id: "l4", text: "Je ne sais pas danser, moi… *Oups* !", start: 15.2, end: 18.8, speaker: "Pistache" },
-  { id: "l5", text: "On essaie *ensemble* ? On se tient la main !", start: 19.2, end: 23.0, speaker: "Noisette" },
+  { id: "l5", text: "On danse *ensemble* ? Je te tiens la main !", start: 19.2, end: 23.0, speaker: "Noisette" },
   { id: "l6", text: "Moi *aussi* je danse ! C'est trop bien !", start: 23.4, end: 28.0, speaker: "Pistache" },
-  { id: "l7", text: "À très *vite* !", start: 31.6, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "À très *vite* !", start: 32.7, end: 35.6, speaker: "Noisette" },
 ];
 
 export const ep07: Episode = {

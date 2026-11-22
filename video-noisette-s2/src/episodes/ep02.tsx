@@ -11,11 +11,11 @@ const lines = [
   { id: "l2", text: "Compte avec moi : 1, 2, 3, 4, *5* !", start: 7.2, end: 12.4, speaker: "Noisette" },
   { id: "l3", text: "Où est Pistache ? Tu le *vois* ?", start: 12.8, end: 16.4, speaker: "Noisette" },
   { id: "l4", text: "Sa *queue* dépasse du buisson !", start: 16.8, end: 20.4 },
-  { id: "l5", text: "Trouvé ! À toi ! On essaie *ensemble* ?", start: 20.8, end: 24.6, speaker: "Noisette" },
+  { id: "l5", text: "Trouvé ! À toi de *compter* maintenant !", start: 20.8, end: 24.6, speaker: "Noisette" },
   { id: "l6", text: "Moi *aussi* je veux encore jouer !", start: 25.0, end: 28.6, speaker: "Pistache" },
-  { id: "l7", text: "À très *vite* !", start: 31.6, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "À très *vite* !", start: 32.7, end: 35.6, speaker: "Noisette" },
 ];
-const COUNT = [7.9, 8.8, 9.7, 10.6, 11.5];
+const COUNT = [8.3, 9.2, 10.1, 11.0, 11.9];
 
 export const ep02: Episode = {
   id: "ep02", season: 2, number: 2, title: "Cache-cache", duration: 36, endAt: 29.2, lines,
@@ -39,7 +39,7 @@ export const ep02: Episode = {
             <Actor id="pis" who={PISTA} t={t} lines={lines} x={[[20.2, 870]]} y={GROUND + 8 - found * 0} facing={[[0, -1]]}
               beats={[{ at: 20.2, to: 21.4, act: "surprise" }, { at: 21.4, to: 25.0, act: "laugh" }, { at: 25.0, to: 29.2, act: "joy" }, { at: 29.2, to: 36, act: "wave" }]} />
           ) : null}
-          <PopWord t={t} at={17.0} dur={1.4} x={940} y={GROUND - 360} text="LÀ !" size={110} color="#ff9f43" />
+          <PopWord t={t} at={15.6} dur={1.4} x={940} y={GROUND - 360} text="LÀ !" size={110} color="#ff9f43" />
           <PopWord t={t} at={20.3} dur={1.2} x={700} y={GROUND - 640} text="TROUVÉ !" size={100} color="#4fb36c" />
           <Sparkles t={t} at={20.3} x={870} y={GROUND - 200} n={16} />
           <Actor id="noi" who={NOI} t={t} lines={lines} x={[[0, 330], [17.6, 330], [19.6, 560]]} facing={[[0, 1], [7.2, -1], [12.8, 1]]}

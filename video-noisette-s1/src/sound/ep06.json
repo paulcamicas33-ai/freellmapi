@@ -1,0 +1,89 @@
+{
+ "music": {
+  "file": "music-dance.wav",
+  "gainDb": -9
+ },
+ "prefix": "voice-s1ep06",
+ "cues": [
+  {
+   "file": "sfx-xylo-1.wav",
+   "t": 8.6,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-2.wav",
+   "t": 9.4,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-3.wav",
+   "t": 10.2,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-ding.wav",
+   "t": 10.9,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-steps.wav",
+   "t": 11.0,
+   "gainDb": -10
+  },
+  {
+   "file": "sfx-steps.wav",
+   "t": 15.4,
+   "gainDb": -12
+  },
+  {
+   "file": "sfx-steps.wav",
+   "t": 19.4,
+   "gainDb": -12
+  },
+  {
+   "file": "sfx-tada.wav",
+   "t": 24.1,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-sparkle.wav",
+   "t": 24.2,
+   "gainDb": -8
+  }
+ ],
+ "say": {
+  "l2": "On compte !"
+ },
+ "extra": [
+  {
+   "id": "n1",
+   "text": "Trois !",
+   "t": 8.6,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n2",
+   "text": "Deux !",
+   "t": 9.4,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n3",
+   "text": "Un !",
+   "t": 10.2,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "partez",
+   "text": "Partez !",
+   "t": 10.9,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "bravo",
+   "text": "Bravo !",
+   "t": 24.1,
+   "speaker": "Noisette"
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+{
+  "music": { "file": "music-day.wav", "gainDb": -9 },
+  "prefix": "voice-s2ep01",
+  "extra": [{ "id": "bonjour", "text": "Bonjour !", "t": 16.9, "speaker": "Noisette" }],
+  "cues": [
+    { "file": "sfx-steps.wav", "t": 0.2, "gainDb": -12 },
+    { "file": "sfx-pop.wav", "t": 3.6, "gainDb": -6 },
+    { "file": "sfx-flutter.wav", "t": 7.6, "gainDb": -8 },
+    { "file": "sfx-squeak.wav", "t": 8.1, "gainDb": -6 },
+    { "file": "sfx-boing.wav", "t": 11.0, "gainDb": -6 },
+    { "file": "sfx-pop.wav", "t": 16.9, "gainDb": -6 },
+    { "file": "sfx-chime.wav", "t": 17.0, "gainDb": -8 },
+    { "file": "sfx-whoosh-fast.wav", "t": 19.4, "gainDb": -16 },
+    { "file": "sfx-squeak.wav", "t": 22.7, "gainDb": -4 },
+    { "file": "sfx-sparkle.wav", "t": 22.8, "gainDb": -8 }
+  ]
+}

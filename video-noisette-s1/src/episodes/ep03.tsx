@@ -12,7 +12,7 @@ const lines = [
   { id: "l4", text: "Ils creusent un petit *chemin* jusqu'à la mer.", start: 15.0, end: 18.8 },
   { id: "l5", text: "Plouf ! Le poisson retrouve sa *maman* !", start: 19.2, end: 22.8 },
   { id: "l6", text: "Aider un ami, ça rend tout *joyeux* !", start: 23.2, end: 27.2, speaker: "Noisette" },
-  { id: "l7", text: "À très *vite* !", start: 31.6, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "À très *vite* !", start: 32.7, end: 35.6, speaker: "Noisette" },
 ];
 
 export const ep03: Episode = {

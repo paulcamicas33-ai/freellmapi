@@ -11,9 +11,9 @@ const lines = [
   { id: "l2", text: "Ce nuage est tout *rond* !", start: 7.4, end: 10.6, speaker: "Noisette" },
   { id: "l3", text: "Et celui-là ? C'est un *coeur* !", start: 11.0, end: 14.4, speaker: "Pistache" },
   { id: "l4", text: "Un *poisson* ! Et là… une étoile !", start: 14.8, end: 19.4, speaker: "Noisette" },
-  { id: "l5", text: "On en cherche d'autres ? On essaie *ensemble* ?", start: 19.8, end: 23.6, speaker: "Noisette" },
+  { id: "l5", text: "On en cherche d'autres *ensemble* ?", start: 19.8, end: 23.6, speaker: "Noisette" },
   { id: "l6", text: "Moi *aussi*, j'adore les nuages !", start: 24.0, end: 27.8, speaker: "Pistache" },
-  { id: "l7", text: "À très *vite* !", start: 31.6, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "À très *vite* !", start: 32.7, end: 35.6, speaker: "Noisette" },
 ];
 const SHAPES: { shape: string; label: string; at: number; x: number; y: number }[] = [
   { shape: "round", label: "ROND", at: 7.6, x: 270, y: 300 },

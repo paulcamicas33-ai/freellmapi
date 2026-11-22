@@ -12,7 +12,7 @@ const lines = [
   { id: "l4", text: "Pompon roule les boules, Noisette porte la *tête* !", start: 15.2, end: 19.2 },
   { id: "l5", text: "Et voilà mon *écharpe* !", start: 19.6, end: 23.0, speaker: "Noisette" },
   { id: "l6", text: "Seul c'est dur, mais ensemble c'est *facile* !", start: 23.6, end: 27.6 },
-  { id: "l7", text: "À très *vite* !", start: 31.6, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "À très *vite* !", start: 32.7, end: 35.6, speaker: "Noisette" },
 ];
 
 export const ep04: Episode = {

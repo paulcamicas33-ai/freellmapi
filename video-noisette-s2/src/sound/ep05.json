@@ -1,0 +1,44 @@
+{
+ "music": {
+  "file": "music-day.wav",
+  "gainDb": -9
+ },
+ "prefix": "voice-s2ep05",
+ "cues": [
+  {
+   "file": "sfx-pop.wav",
+   "t": 7.6,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-pop.wav",
+   "t": 11.2,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-sparkle.wav",
+   "t": 11.8,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-pop.wav",
+   "t": 15.0,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-pop.wav",
+   "t": 17.4,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-sparkle.wav",
+   "t": 17.6,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-squeak.wav",
+   "t": 24.0,
+   "gainDb": -4
+  }
+ ]
+}

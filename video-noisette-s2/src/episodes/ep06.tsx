@@ -10,15 +10,15 @@ const lines = [
   { id: "l1", text: "C'est l'heure du *pique-nique* !", start: 3.4, end: 6.6 },
   { id: "l2", text: "Une pomme, une fraise, une banane… du *fromage* !", start: 7.0, end: 11.8 },
   { id: "l3", text: "Tout pour moi ! Miam miam *miam* !", start: 12.2, end: 15.4, speaker: "Pistache" },
-  { id: "l4", text: "Et si on partageait ? On essaie *ensemble* ?", start: 15.8, end: 19.6, speaker: "Noisette" },
+  { id: "l4", text: "Et si on *partageait* ? C'est plus gentil !", start: 15.8, end: 19.6, speaker: "Noisette" },
   { id: "l5", text: "Un pour toi, un pour moi. Compte : 1, 2, 3, *4* !", start: 20.0, end: 24.8 },
   { id: "l6", text: "Moi *aussi* j'aime partager ! C'est meilleur !", start: 25.2, end: 28.8, speaker: "Pistache" },
-  { id: "l7", text: "À très *vite* !", start: 31.6, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "À très *vite* !", start: 33.0, end: 35.6, speaker: "Noisette" },
 ];
 const FOOD: { kind: "apple" | "strawberry" | "banana" | "cheese"; at: number }[] = [
   { kind: "apple", at: 7.4 }, { kind: "strawberry", at: 8.6 }, { kind: "banana", at: 9.8 }, { kind: "cheese", at: 11.0 },
 ];
-const SPLIT = [20.8, 21.6, 22.4, 23.2];
+const SPLIT = [21.0, 21.8, 22.6, 23.4];
 
 export const ep06: Episode = {
   id: "ep06", season: 2, number: 6, title: "Le pique-nique", duration: 36, endAt: 29.4, lines,

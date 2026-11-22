@@ -1,0 +1,100 @@
+{
+ "music": {
+  "file": "music-day.wav",
+  "gainDb": -9
+ },
+ "prefix": "voice-s2ep02",
+ "cues": [
+  {
+   "file": "sfx-steps.wav",
+   "t": 7.2,
+   "gainDb": -10
+  },
+  {
+   "file": "sfx-xylo-1.wav",
+   "t": 8.3,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-2.wav",
+   "t": 9.2,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-3.wav",
+   "t": 10.1,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-4.wav",
+   "t": 11.0,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-5.wav",
+   "t": 11.9,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-pop.wav",
+   "t": 15.6,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-squeak.wav",
+   "t": 17.0,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-tada.wav",
+   "t": 20.3,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-squeak.wav",
+   "t": 25.0,
+   "gainDb": -4
+  }
+ ],
+ "say": {
+  "l2": "On compte !"
+ },
+ "extra": [
+  {
+   "id": "n1",
+   "text": "Un !",
+   "t": 8.3,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n2",
+   "text": "Deux !",
+   "t": 9.2,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n3",
+   "text": "Trois !",
+   "t": 10.1,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n4",
+   "text": "Quatre !",
+   "t": 11.0,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n5",
+   "text": "Cinq !",
+   "t": 11.9,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "la",
+   "text": "Là !",
+   "t": 15.6,
+   "speaker": "Noisette"
+  }
+ ]
+}

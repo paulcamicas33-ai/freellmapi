@@ -1,0 +1,89 @@
+{
+ "music": {
+  "file": "music-night.wav",
+  "gainDb": -9
+ },
+ "prefix": "voice-s2ep09",
+ "cues": [
+  {
+   "file": "sfx-xylo-1.wav",
+   "t": 12.2,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-2.wav",
+   "t": 13.1,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-3.wav",
+   "t": 14.0,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-4.wav",
+   "t": 14.9,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-5.wav",
+   "t": 15.8,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-whoosh.wav",
+   "t": 17.4,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-sparkle.wav",
+   "t": 18.8,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-chime.wav",
+   "t": 18.9,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-squeak.wav",
+   "t": 21.2,
+   "gainDb": -6
+  }
+ ],
+ "say": {
+  "l3": "On compte !"
+ },
+ "extra": [
+  {
+   "id": "n1",
+   "text": "Un !",
+   "t": 12.2,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n2",
+   "text": "Deux !",
+   "t": 13.1,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n3",
+   "text": "Trois !",
+   "t": 14.0,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n4",
+   "text": "Quatre !",
+   "t": 14.9,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n5",
+   "text": "Cinq !",
+   "t": 15.8,
+   "speaker": "Noisette"
+  }
+ ]
+}

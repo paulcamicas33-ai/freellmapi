@@ -1,0 +1,54 @@
+{
+ "music": {
+  "file": "music-day.wav",
+  "gainDb": -9
+ },
+ "prefix": "voice-s1ep03",
+ "cues": [
+  {
+   "file": "sfx-steps.wav",
+   "t": 0.2,
+   "gainDb": -12
+  },
+  {
+   "file": "sfx-pop.wav",
+   "t": 9.0,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-thump.wav",
+   "t": 15.2,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-thump.wav",
+   "t": 16.4,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-thump.wav",
+   "t": 17.6,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-whoosh.wav",
+   "t": 19.0,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-plouf.wav",
+   "t": 20.4,
+   "gainDb": -4
+  },
+  {
+   "file": "sfx-sparkle.wav",
+   "t": 20.6,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-bubbles.wav",
+   "t": 20.9,
+   "gainDb": -8
+  }
+ ]
+}

@@ -12,7 +12,7 @@ const lines = [
   { id: "l4", text: "Souffle encore ! On essaie *ensemble* ?", start: 15.2, end: 18.8, speaker: "Noisette" },
   { id: "l5", text: "Des bulles partout ! Tout le monde *rit*.", start: 19.2, end: 23.0 },
   { id: "l6", text: "Sois *toi-même* : c'est ça, ta magie !", start: 23.4, end: 27.6, speaker: "Noisette" },
-  { id: "l7", text: "À très *vite* !", start: 31.6, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "À très *vite* !", start: 32.7, end: 35.6, speaker: "Noisette" },
 ];
 
 /** Bubbles emitted from the dragon's mouth between a and b, rising and drifting. */

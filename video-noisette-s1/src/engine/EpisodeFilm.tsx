@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Html5Audio, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { Camera, Layer } from "../world/Camera";
 import { Atmosphere } from "../world/Atmosphere";
 import { Grain } from "../world/Grain";
@@ -10,8 +10,11 @@ import { Backdrop, PALETTES } from "./places";
 import { Iris } from "./fx";
 import { W, H, Episode } from "./types";
 import { EPISODES } from "../episodes";
+import { commonCues } from "./sound";
 
 const FPS = 30;
+/** All effects sit this many dB under their cue level, so they stay discreet under music and voice. */
+const SFX_TRIM_DB = -9;
 
 const ink = (dark: boolean) => dark
   ? { color: "#fff8ec", textShadow: "0 5px 0 #2b3466, 0 14px 30px rgba(10,15,40,0.8)", accent: "#9be3a8" }
@@ -26,7 +29,7 @@ const TitleCard: React.FC<{ t: number; ep: Episode; dark: boolean }> = ({ t, ep,
       transform: `translateY(${(1 - k) * -50 - out * 40}px) scale(${0.85 + k * 0.15})` }}>
       <div style={{ display: "inline-block", padding: "8px 26px", borderRadius: 40, background: "#4fb36c", color: "#fff",
         fontFamily: FONT.title, fontWeight: 900, fontSize: 40, letterSpacing: "0.04em", boxShadow: "0 6px 0 #2f7d47" }}>
-        ÉPISODE {ep.number}
+        {ep.season ? `SAISON ${ep.season} · ` : ""}ÉPISODE {ep.number}
       </div>
       <div style={{ marginTop: 18, fontFamily: FONT.title, fontWeight: 900, fontSize: 92, lineHeight: 1.04, color: ink(dark).color, letterSpacing: "-0.03em",
         textShadow: ink(dark).textShadow }}>{ep.title}</div>
@@ -86,6 +89,57 @@ export const EpisodeFilm: React.FC<{ episode: string }> = ({ episode }) => {
       {ep.lines.map((l) => <Caption key={l.id} t={t} line={l} width={W} height={H} portrait accent="#3f9a5c" />)}
       <Iris t={t} cuts={cuts} />
       <Grain frame={frame} width={W} height={H} strength={0.07} />
+      <EpisodeSound ep={ep} />
     </AbsoluteFill>
   );
+};
+
+/** Music bed (ducked under every voice), every effect cue, and the voices. */
+const EpisodeSound: React.FC<{ ep: Episode }> = ({ ep }) => {
+  const snd = ep.sound;
+  if (!snd) return null;
+  const total = Math.round(ep.duration * FPS);
+  const dbToGain = (db: number) => Math.min(1, 10 ** (db / 20));
+  const voices = voiceTrack(ep);
+  const cues = [...commonCues(ep.endAt, ep.duration), ...snd.cues];
+  return (
+    <>
+      <Sequence from={0}>
+        <Html5Audio src={staticFile(`audio/${snd.music.file}`)} volume={(f) => {
+          const t = f / FPS;
+          const talking = voices.some((v) => t > v.t - 0.15 && t < v.t + 2.4);
+          return dbToGain(snd.music.gainDb - (talking ? 9 : 0)) * Math.min(1, f / 9, (total - f) / 30);
+        }} />
+      </Sequence>
+      {voices.map((v) => (
+        <Sequence key={`v-${v.id}`} from={Math.round(v.t * FPS)}>
+          <Html5Audio src={staticFile(`audio/${snd.prefix}-${v.id}.wav`)} volume={1} />
+        </Sequence>
+      ))}
+      {cues.map((c, i) => {
+        const start = Math.round(c.t * FPS) - Math.round((c.syncAt ?? 0) * FPS);
+        return (
+          <Sequence key={i} from={Math.max(0, start)}>
+            <Html5Audio src={staticFile(`audio/${c.file}`)} volume={dbToGain((c.gainDb ?? -4) + SFX_TRIM_DB)} {...(start < 0 ? { trimBefore: -start } : {})} />
+          </Sequence>
+        );
+      })}
+    </>
+  );
+};
+
+/**
+ * Everything written on screen is also read aloud, starting as the text appears: the title card,
+ * every caption (or its `say` version), every extra word (numbers, colours, meaningful pop words),
+ * and the end card.
+ */
+export const voiceTrack = (ep: Episode) => {
+  const snd = ep.sound;
+  const say = snd?.say ?? {};
+  return [
+    { id: "title", text: `Épisode ${ep.number} : ${ep.title} !`, t: 0.2 } as { id: string; text: string; t: number; speaker?: string },
+    ...ep.lines.filter((l) => say[l.id] !== "").map((l) => ({ id: l.id, text: say[l.id] ?? l.text, t: l.start, speaker: l.speaker })),
+    ...(snd?.extra ?? []),
+    { id: "endcard", text: "Quelle aventure ensuite ? Écris ton idée en commentaire !", t: ep.endAt + 0.15, speaker: "Noisette" },
+  ].sort((a, b) => a.t - b.t);
 };

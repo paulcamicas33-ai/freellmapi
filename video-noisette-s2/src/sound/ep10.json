@@ -1,0 +1,69 @@
+{
+ "music": {
+  "file": "music-night.wav",
+  "gainDb": -9
+ },
+ "prefix": "voice-s2ep10",
+ "cues": [
+  {
+   "file": "sfx-steps.wav",
+   "t": 2.0,
+   "gainDb": -10
+  },
+  {
+   "file": "sfx-boing.wav",
+   "t": 15.8,
+   "gainDb": -10
+  },
+  {
+   "file": "sfx-boing.wav",
+   "t": 17.6,
+   "gainDb": -10
+  },
+  {
+   "file": "sfx-boing.wav",
+   "t": 19.4,
+   "gainDb": -10
+  },
+  {
+   "file": "sfx-xylo-1.wav",
+   "t": 16.5,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-2.wav",
+   "t": 18.3,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-3.wav",
+   "t": 20.1,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-squeak.wav",
+   "t": 25.2,
+   "gainDb": -6
+  }
+ ],
+ "say": {
+  "l4": ""
+ },
+ "extra": [
+  {
+   "id": "m1",
+   "text": "Un mouton !",
+   "t": 16.5
+  },
+  {
+   "id": "m2",
+   "text": "Deux moutons !",
+   "t": 18.3
+  },
+  {
+   "id": "m3",
+   "text": "Trois moutons !",
+   "t": 20.1
+  }
+ ]
+}

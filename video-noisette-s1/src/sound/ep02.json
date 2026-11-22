@@ -1,0 +1,145 @@
+{
+ "music": {
+  "file": "music-day.wav",
+  "gainDb": -9
+ },
+ "prefix": "voice-s1ep02",
+ "cues": [
+  {
+   "file": "sfx-steps.wav",
+   "t": 0.2,
+   "gainDb": -12
+  },
+  {
+   "file": "sfx-pop.wav",
+   "t": 3.5,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-flutter.wav",
+   "t": 3.6,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-boing.wav",
+   "t": 7.0,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-thump.wav",
+   "t": 11.2,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-thump.wav",
+   "t": 12.4,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-thump.wav",
+   "t": 13.6,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-riser.wav",
+   "t": 15.2,
+   "gainDb": -10,
+   "syncAt": 1.6
+  },
+  {
+   "file": "sfx-tada.wav",
+   "t": 15.5,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-sparkle.wav",
+   "t": 15.6,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-xylo-1.wav",
+   "t": 16.4,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-2.wav",
+   "t": 17.25,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-3.wav",
+   "t": 18.1,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-4.wav",
+   "t": 18.95,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-5.wav",
+   "t": 19.8,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-tick.wav",
+   "t": 21.0,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-tick.wav",
+   "t": 21.4,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-tick.wav",
+   "t": 21.8,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-tick.wav",
+   "t": 22.2,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-tick.wav",
+   "t": 22.6,
+   "gainDb": -8
+  }
+ ],
+ "say": {
+  "l4": "Comptons !"
+ },
+ "extra": [
+  {
+   "id": "n1",
+   "text": "Un !",
+   "t": 16.4,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n2",
+   "text": "Deux !",
+   "t": 17.25,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n3",
+   "text": "Trois !",
+   "t": 18.1,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n4",
+   "text": "Quatre !",
+   "t": 18.95,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n5",
+   "text": "Cinq !",
+   "t": 19.8,
+   "speaker": "Noisette"
+  }
+ ]
+}

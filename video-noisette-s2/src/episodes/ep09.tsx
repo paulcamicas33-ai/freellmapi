@@ -8,15 +8,15 @@ import { cam, pop, prog } from "../lib/ease";
 
 const lines = [
   { id: "l1", text: "Cette nuit, les étoiles *s'allument* une à une.", start: 3.4, end: 7.0 },
-  { id: "l2", text: "On les compte ? On essaie *ensemble* ?", start: 7.4, end: 11.0, speaker: "Noisette" },
+  { id: "l2", text: "On les compte *ensemble* ?", start: 7.4, end: 11.0, speaker: "Noisette" },
   { id: "l3", text: "Compte avec nous : 1, 2, 3, 4, *5* !", start: 11.4, end: 16.6 },
   { id: "l4", text: "Oh ! Une étoile *filante* ! Fais un souhait !", start: 17.0, end: 20.8, speaker: "Noisette" },
   { id: "l5", text: "Mon souhait : rester ton *ami* pour toujours.", start: 21.2, end: 25.0, speaker: "Pistache" },
   { id: "l6", text: "Moi *aussi* !", start: 25.4, end: 28.2, speaker: "Noisette" },
-  { id: "l7", text: "À très *vite* !", start: 31.6, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "À très *vite* !", start: 32.7, end: 35.6, speaker: "Noisette" },
 ];
 const STARS = [
-  { at: 12.0, x: 200, y: 360 }, { at: 12.9, x: 430, y: 250 }, { at: 13.8, x: 660, y: 330 }, { at: 14.7, x: 880, y: 230 }, { at: 15.6, x: 540, y: 520 },
+  { at: 12.2, x: 200, y: 360 }, { at: 13.1, x: 430, y: 250 }, { at: 14.0, x: 660, y: 330 }, { at: 14.9, x: 880, y: 230 }, { at: 15.8, x: 540, y: 520 },
 ];
 
 export const ep09: Episode = {
@@ -38,7 +38,7 @@ export const ep09: Episode = {
             </g>
           ) : null}
           <Sparkles t={t} at={18.8} x={150} y={460} n={14} color="#fff3a0" />
-          <PopWord t={t} at={17.2} x={540} y={GROUND - 760} text="WAOUH !" size={100} color="#ffd166" />
+          <PopWord t={t} at={17.2} x={540} y={GROUND - 760} text="OH !" size={100} color="#ffd166" />
           <Actor id="pis" who={PISTA} t={t} lines={lines} x={[[0, 740]]} facing={[[0, -1]]}
             beats={[
               { at: 0, to: 3.4, act: "wave" }, { at: 3.4, to: 11.4, act: "lookUp", look: [0, -0.9] }, { at: 11.4, to: 17.0, act: "point", look: [0, -0.9] },

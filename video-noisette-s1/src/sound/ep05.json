@@ -1,0 +1,39 @@
+{
+ "music": {
+  "file": "music-night.wav",
+  "gainDb": -9
+ },
+ "prefix": "voice-s1ep05",
+ "cues": [
+  {
+   "file": "sfx-steps.wav",
+   "t": 3.4,
+   "gainDb": -10
+  },
+  {
+   "file": "sfx-steps.wav",
+   "t": 11.0,
+   "gainDb": -12
+  },
+  {
+   "file": "sfx-shimmer.wav",
+   "t": 15.2,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-chime.wav",
+   "t": 15.3,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-magic.wav",
+   "t": 19.4,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-boing.wav",
+   "t": 19.5,
+   "gainDb": -10
+  }
+ ]
+}

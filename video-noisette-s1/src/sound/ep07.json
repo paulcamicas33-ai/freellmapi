@@ -1,0 +1,97 @@
+{
+ "music": {
+  "file": "music-day.wav",
+  "gainDb": -9
+ },
+ "prefix": "voice-s1ep07",
+ "cues": [
+  {
+   "file": "sfx-steps.wav",
+   "t": 0.2,
+   "gainDb": -12
+  },
+  {
+   "file": "sfx-splat.wav",
+   "t": 8.2,
+   "gainDb": -4
+  },
+  {
+   "file": "sfx-magic.wav",
+   "t": 15.6,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-pop.wav",
+   "t": 16.4,
+   "gainDb": -10
+  },
+  {
+   "file": "sfx-pop.wav",
+   "t": 16.95,
+   "gainDb": -10
+  },
+  {
+   "file": "sfx-pop.wav",
+   "t": 17.5,
+   "gainDb": -10
+  },
+  {
+   "file": "sfx-pop.wav",
+   "t": 18.049999999999997,
+   "gainDb": -10
+  },
+  {
+   "file": "sfx-pop.wav",
+   "t": 18.599999999999998,
+   "gainDb": -10
+  },
+  {
+   "file": "sfx-xylo-1.wav",
+   "t": 20.4,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-2.wav",
+   "t": 21.1,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-3.wav",
+   "t": 21.8,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-whoosh-fast.wav",
+   "t": 22.8,
+   "gainDb": -10
+  },
+  {
+   "file": "sfx-sparkle.wav",
+   "t": 22.9,
+   "gainDb": -8
+  }
+ ],
+ "say": {
+  "l5": "Souffle !"
+ },
+ "extra": [
+  {
+   "id": "n1",
+   "text": "Un !",
+   "t": 20.4,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n2",
+   "text": "Deux !",
+   "t": 21.1,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n3",
+   "text": "Trois !",
+   "t": 21.8,
+   "speaker": "Noisette"
+  }
+ ]
+}

@@ -1,0 +1,54 @@
+{
+ "music": {
+  "file": "music-snow.wav",
+  "gainDb": -9
+ },
+ "prefix": "voice-s1ep04",
+ "cues": [
+  {
+   "file": "sfx-steps.wav",
+   "t": 0.2,
+   "gainDb": -12
+  },
+  {
+   "file": "sfx-pop.wav",
+   "t": 9.0,
+   "gainDb": -4
+  },
+  {
+   "file": "sfx-sparkle.wav",
+   "t": 9.05,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-boing.wav",
+   "t": 10.4,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-thump.wav",
+   "t": 15.2,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-pop.wav",
+   "t": 17.2,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-thump.wav",
+   "t": 19.2,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-whoosh-fast.wav",
+   "t": 20.6,
+   "gainDb": -12
+  },
+  {
+   "file": "sfx-tada.wav",
+   "t": 21.0,
+   "gainDb": -6
+  }
+ ]
+}

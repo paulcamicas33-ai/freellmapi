@@ -1,0 +1,98 @@
+{
+ "music": {
+  "file": "music-day.wav",
+  "gainDb": -9
+ },
+ "prefix": "voice-s2ep06",
+ "cues": [
+  {
+   "file": "sfx-click.wav",
+   "t": 6.8,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-pop.wav",
+   "t": 7.4,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-pop.wav",
+   "t": 8.6,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-pop.wav",
+   "t": 9.8,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-pop.wav",
+   "t": 11.0,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-whoosh-fast.wav",
+   "t": 12.4,
+   "gainDb": -12
+  },
+  {
+   "file": "sfx-xylo-1.wav",
+   "t": 21.0,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-2.wav",
+   "t": 21.8,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-3.wav",
+   "t": 22.6,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-4.wav",
+   "t": 23.4,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-squeak.wav",
+   "t": 25.2,
+   "gainDb": -4
+  },
+  {
+   "file": "sfx-sparkle.wav",
+   "t": 25.3,
+   "gainDb": -8
+  }
+ ],
+ "say": {
+  "l5": "On partage !"
+ },
+ "extra": [
+  {
+   "id": "n1",
+   "text": "Un !",
+   "t": 21.0,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n2",
+   "text": "Deux !",
+   "t": 21.8,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n3",
+   "text": "Trois !",
+   "t": 22.6,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n4",
+   "text": "Quatre !",
+   "t": 23.4,
+   "speaker": "Noisette"
+  }
+ ]
+}

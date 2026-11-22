@@ -1,0 +1,83 @@
+{
+ "music": {
+  "file": "music-day.wav",
+  "gainDb": -9
+ },
+ "prefix": "voice-s2ep04",
+ "cues": [
+  {
+   "file": "sfx-chime.wav",
+   "t": 3.4,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-thump.wav",
+   "t": 9.6,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-thump.wav",
+   "t": 10.4,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-bubbles.wav",
+   "t": 11.6,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-xylo-1.wav",
+   "t": 16.6,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-2.wav",
+   "t": 17.6,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-3.wav",
+   "t": 18.6,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-riser.wav",
+   "t": 20.2,
+   "gainDb": -10,
+   "syncAt": 1.6
+  },
+  {
+   "file": "sfx-tada.wav",
+   "t": 20.2,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-squeak.wav",
+   "t": 24.4,
+   "gainDb": -4
+  }
+ ],
+ "say": {
+  "l4": "Dis avec nous !"
+ },
+ "extra": [
+  {
+   "id": "p1",
+   "text": "Pousse !",
+   "t": 16.6,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "p2",
+   "text": "Pousse !",
+   "t": 17.6,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "p3",
+   "text": "Pousse !",
+   "t": 18.6,
+   "speaker": "Noisette"
+  }
+ ]
+}

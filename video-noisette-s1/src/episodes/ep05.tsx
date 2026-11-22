@@ -8,11 +8,11 @@ import { prog } from "../lib/ease";
 const lines = [
   { id: "l1", text: "La nuit tombe. Pipo l'ourson a *peur* du noir.", start: 3.4, end: 7.0 },
   { id: "l2", text: "Le noir, c'est *effrayant*…", start: 7.4, end: 10.6, speaker: "Pipo" },
-  { id: "l3", text: "Avec ma lanterne… on essaie *ensemble* ?", start: 11.0, end: 14.8, speaker: "Noisette" },
+  { id: "l3", text: "Viens avec ma lanterne ! On regarde *ensemble* ?", start: 11.0, end: 14.8, speaker: "Noisette" },
   { id: "l4", text: "Regarde ! Des *lucioles* et des étoiles !", start: 15.2, end: 19.0, speaker: "Noisette" },
   { id: "l5", text: "Oh… La nuit est *belle*, en fait !", start: 19.4, end: 23.2, speaker: "Pipo" },
   { id: "l6", text: "Quand on est deux, on a moins *peur*.", start: 23.6, end: 27.6 },
-  { id: "l7", text: "Bonne nuit et à très *vite* !", start: 31.6, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "Bonne nuit et à très *vite* !", start: 32.7, end: 35.6, speaker: "Noisette" },
 ];
 
 export const ep05: Episode = {

@@ -12,7 +12,7 @@ const lines = [
   { id: "l4", text: "Puis on dit bonne nuit à la *Lune*.", start: 15.4, end: 19.0 },
   { id: "l5", text: "Bonne nuit la Lune ! Bonne nuit les *étoiles* !", start: 19.4, end: 23.2, speaker: "Noisette" },
   { id: "l6", text: "Noisette fait de beaux *rêves*…", start: 23.6, end: 27.6 },
-  { id: "l7", text: "Bonne nuit les enfants… À très *vite* !", start: 31.6, end: 35.6 },
+  { id: "l7", text: "Bonne nuit les enfants… À très *vite* !", start: 32.7, end: 35.6 },
 ];
 
 export const ep10: Episode = {

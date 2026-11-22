@@ -1,0 +1,83 @@
+{
+ "music": {
+  "file": "music-day.wav",
+  "gainDb": -9
+ },
+ "prefix": "voice-s2ep03",
+ "cues": [
+  {
+   "file": "sfx-whoosh.wav",
+   "t": 0.3,
+   "gainDb": -10
+  },
+  {
+   "file": "sfx-flutter.wav",
+   "t": 7.6,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-thump.wav",
+   "t": 15.6,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-xylo-1.wav",
+   "t": 16.6,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-2.wav",
+   "t": 17.4,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-3.wav",
+   "t": 18.2,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-whoosh.wav",
+   "t": 19.2,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-tada.wav",
+   "t": 19.3,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-squeak.wav",
+   "t": 24.2,
+   "gainDb": -4
+  }
+ ],
+ "say": {
+  "l4": "Tire avec nous !"
+ },
+ "extra": [
+  {
+   "id": "n1",
+   "text": "Un !",
+   "t": 16.6,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n2",
+   "text": "Deux !",
+   "t": 17.4,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "n3",
+   "text": "Trois !",
+   "t": 18.2,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "hourra",
+   "text": "Hourra !",
+   "t": 19.3,
+   "speaker": "Pistache"
+  }
+ ]
+}

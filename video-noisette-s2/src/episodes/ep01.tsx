@@ -6,7 +6,6 @@ import { Fruit } from "../engine/props2";
 import { Sparkles } from "../engine/fx";
 import { Bush } from "../world/Props";
 import { arrive, prog } from "../lib/ease";
-import { commonCues } from "../engine/sound";
 
 const lines = [
   { id: "l1", text: "Derrière le buisson, quelqu'un se *cache*…", start: 3.4, end: 6.8 },
@@ -15,27 +14,11 @@ const lines = [
   { id: "l4", text: "Dis bonjour à Pistache avec la *main* !", start: 14.4, end: 18.0 },
   { id: "l5", text: "Veux-tu être mon *ami* ? On partage le goûter !", start: 18.4, end: 22.2, speaker: "Noisette" },
   { id: "l6", text: "Oui ! Moi *aussi* je veux être ton ami !", start: 22.6, end: 26.4, speaker: "Pistache" },
-  { id: "l7", text: "À très *vite* !", start: 31.6, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "À très *vite* !", start: 32.7, end: 35.6, speaker: "Noisette" },
 ];
 
 export const ep01: Episode = {
   id: "ep01", season: 2, number: 1, title: "Un nouvel ami", duration: 36, endAt: 27.4, lines,
-  music: { file: "music-day.wav", gainDb: -9 },
-  voicePrefix: "voice-s2ep01",
-  extraVoices: [{ id: "bonjour", text: "Bonjour !", t: 16.9, speaker: "Noisette" }],
-  cues: [
-    ...commonCues(27.4, 36),
-    { file: "sfx-steps.wav", t: 0.2, gainDb: -12 },
-    { file: "sfx-pop.wav", t: 3.6, gainDb: -6 },
-    { file: "sfx-flutter.wav", t: 7.6, gainDb: -8 },
-    { file: "sfx-squeak.wav", t: 8.1, gainDb: -6 },
-    { file: "sfx-boing.wav", t: 11.0, gainDb: -6 },
-    { file: "sfx-pop.wav", t: 16.9, gainDb: -6 },
-    { file: "sfx-chime.wav", t: 17.0, gainDb: -8 },
-    { file: "sfx-whoosh-fast.wav", t: 19.4, gainDb: -16 },
-    { file: "sfx-squeak.wav", t: 22.7, gainDb: -4 },
-    { file: "sfx-sparkle.wav", t: 22.8, gainDb: -8 },
-  ],
   scenes: [{
     id: "all", start: 0, end: 36, place: "meadow", zoom: [[0, 1], [11, 1.05], [36, 1.04]],
     world: (t) => {

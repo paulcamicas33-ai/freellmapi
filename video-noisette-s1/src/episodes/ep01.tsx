@@ -15,11 +15,11 @@ const lines = [
   { id: "l4", text: "Retiens ton souffle avec nous : 1, 2, *3* !", start: 15.4, end: 20.3, speaker: "Noisette" },
   { id: "l5", text: "Plus de hoquet ! La Lune *brille* de joie.", start: 21.2, end: 25.0 },
   { id: "l6", text: "Ensemble, on y arrive *toujours* !", start: 25.6, end: 29.4, speaker: "Noisette" },
-  { id: "l7", text: "À très *vite* !", start: 31.8, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "À très *vite* !", start: 33.3, end: 35.6, speaker: "Noisette" },
 ];
 
 export const ep01: Episode = {
-  id: "ep01", number: 1, title: "La Lune a le hoquet", duration: 36, endAt: 30.6, lines,
+  id: "ep01", number: 1, title: "La Lune a le hoquet", duration: 36, endAt: 29.6, lines,
   scenes: [{
     id: "all", start: 0, end: 36, place: "night",
     zoom: [[0, 1.0], [12, 1.04], [21, 1.06], [36, 1.03]], camY: [[0, 0], [36, -10]],

@@ -1,0 +1,54 @@
+{
+ "music": {
+  "file": "music-dance.wav",
+  "gainDb": -9
+ },
+ "prefix": "voice-s2ep07",
+ "cues": [
+  {
+   "file": "sfx-boing.wav",
+   "t": 7.4,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-boing.wav",
+   "t": 8.4,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-boing.wav",
+   "t": 9.4,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-click.wav",
+   "t": 11.6,
+   "gainDb": -4
+  },
+  {
+   "file": "sfx-click.wav",
+   "t": 12.4,
+   "gainDb": -4
+  },
+  {
+   "file": "sfx-click.wav",
+   "t": 13.2,
+   "gainDb": -4
+  },
+  {
+   "file": "sfx-thump.wav",
+   "t": 16.6,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-squeak.wav",
+   "t": 23.4,
+   "gainDb": -4
+  },
+  {
+   "file": "sfx-sparkle.wav",
+   "t": 23.5,
+   "gainDb": -8
+  }
+ ]
+}

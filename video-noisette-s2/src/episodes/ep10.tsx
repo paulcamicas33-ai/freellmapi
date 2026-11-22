@@ -9,11 +9,11 @@ import { prog } from "../lib/ease";
 const lines = [
   { id: "l1", text: "Ce soir, Pistache dort chez *Noisette* !", start: 3.4, end: 7.0 },
   { id: "l2", text: "Mais Pistache n'a pas *sommeil*…", start: 7.4, end: 10.6 },
-  { id: "l3", text: "On compte les moutons ? On essaie *ensemble* ?", start: 11.0, end: 14.8, speaker: "Noisette" },
+  { id: "l3", text: "On compte les *moutons* ensemble ?", start: 11.0, end: 14.8, speaker: "Noisette" },
   { id: "l4", text: "Un mouton, deux moutons, trois *moutons*…", start: 15.2, end: 20.6 },
   { id: "l5", text: "Pistache bâille… Noisette aussi… *Chut* !", start: 21.0, end: 24.8 },
   { id: "l6", text: "Moi *aussi*… j'ai sommeil… Bonne nuit…", start: 25.2, end: 28.8, speaker: "Pistache" },
-  { id: "l7", text: "Bonne nuit les enfants… À très *vite* !", start: 31.6, end: 35.6 },
+  { id: "l7", text: "Bonne nuit les enfants… À très *vite* !", start: 32.7, end: 35.6 },
 ];
 const SHEEP = [15.8, 17.6, 19.4];
 

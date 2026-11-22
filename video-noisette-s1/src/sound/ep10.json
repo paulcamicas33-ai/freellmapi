@@ -1,0 +1,34 @@
+{
+ "music": {
+  "file": "music-night.wav",
+  "gainDb": -9
+ },
+ "prefix": "voice-s1ep10",
+ "cues": [
+  {
+   "file": "sfx-bubbles.wav",
+   "t": 8.2,
+   "gainDb": -10
+  },
+  {
+   "file": "sfx-pop.wav",
+   "t": 12.4,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-pop.wav",
+   "t": 13.6,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-chime.wav",
+   "t": 15.4,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-sparkle.wav",
+   "t": 19.4,
+   "gainDb": -8
+  }
+ ]
+}

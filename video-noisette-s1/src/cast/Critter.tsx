@@ -1,7 +1,7 @@
 import React from "react";
 import { shade } from "../lib/color";
 
-export type Species = "fox" | "bunny" | "bear" | "cat" | "hedgehog";
+export type Species = "fox" | "bunny" | "bear" | "cat" | "hedgehog" | "mouse";
 export type Look = { fur: string; belly: string; accent?: string; eye?: string; blush?: string };
 /** Every field is optional; angles in degrees, look in -1..1, blink/mouth/smile 0..1. */
 export type Pose = {
@@ -76,6 +76,19 @@ const Ears: React.FC<{ species: Species; fill: string; inner: string; line: stri
       </>
     );
   }
+  if (species === "mouse") {
+    return (
+      <>
+        {[[-70, earL, -18], [70, earR, 18]].map(([x, rot, base], i) => (
+          <g key={i} transform={`translate(${x},-52) rotate(${base + rot})`}>
+            <circle r={50} fill={fill} stroke={line} strokeWidth={5} />
+            <circle r={32} fill={inner} />
+            <path d="M -28 -18 Q -10 -40 14 -36" fill="none" stroke="#fff" strokeOpacity={0.4} strokeWidth={6} strokeLinecap="round" />
+          </g>
+        ))}
+      </>
+    );
+  }
   if (species === "bear") {
     return (
       <>
@@ -115,6 +128,9 @@ const Tail: React.FC<{ species: Species; fill: string; tip: string; line: string
     return <path d={`M -50 -90 C -110 -100 -${120 + wag} -170 -${80 + wag} -200`} fill="none" stroke={line} strokeWidth={22} strokeLinecap="round" />;
   }
   if (species === "hedgehog") return null;
+  if (species === "mouse") {
+    return <path d={`M -50 -70 C -120 -60 -${150 + wag} -120 -${110 + wag} -170 C -${90 + wag} -195 -${60 + wag} -180 -${70 + wag} -160`} fill="none" stroke="#e8a0b4" strokeWidth={9} strokeLinecap="round" />;
+  }
   return <circle cx={-62 - wag * 0.2} cy={-96} r={species === "bunny" ? 24 : 16} fill={tip} stroke={line} strokeWidth={5} />;
 };
 
@@ -200,7 +216,12 @@ export const Critter: React.FC<{ id: string; species: Species; look: Look; x: nu
               <circle cx={s * 60} cy={22} r={13} fill={inner} opacity={0.5} />
             </g>
           ))}
-          <ellipse cx={0} cy={18} rx={12} ry={8.5} fill={shade(eye, -0.2)} />
+          {species === "mouse" ? (
+            <g stroke={line} strokeWidth={3} strokeLinecap="round" opacity={0.7}>
+              <path d="M -24 20 L -78 8 M -24 26 L -80 30 M 24 20 L 78 8 M 24 26 L 80 30" />
+            </g>
+          ) : null}
+          <ellipse cx={0} cy={18} rx={12} ry={8.5} fill={species === "mouse" ? "#f28aa0" : shade(eye, -0.2)} />
           <ellipse cx={-3} cy={15} rx={4} ry={2.5} fill="#fff" opacity={0.6} />
           {mouth > 0.04 ? (
             <g>

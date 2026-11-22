@@ -1,0 +1,110 @@
+{
+ "music": {
+  "file": "music-day.wav",
+  "gainDb": -9
+ },
+ "prefix": "voice-s1ep08",
+ "cues": [
+  {
+   "file": "sfx-plouf.wav",
+   "t": 11.6,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-plouf.wav",
+   "t": 12.6,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-plouf.wav",
+   "t": 13.6,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-plouf.wav",
+   "t": 14.4,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-whoosh.wav",
+   "t": 16.0,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-magic.wav",
+   "t": 16.6,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-xylo-1.wav",
+   "t": 20.3,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-2.wav",
+   "t": 21.3,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-3.wav",
+   "t": 22.3,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-4.wav",
+   "t": 23.3,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-5.wav",
+   "t": 24.3,
+   "gainDb": -5
+  },
+  {
+   "file": "sfx-xylo-6.wav",
+   "t": 25.3,
+   "gainDb": -5
+  }
+ ],
+ "say": {
+  "l5": ""
+ },
+ "extra": [
+  {
+   "id": "c1",
+   "text": "Rouge !",
+   "t": 20.3,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "c2",
+   "text": "Orange !",
+   "t": 21.3,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "c3",
+   "text": "Jaune !",
+   "t": 22.3,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "c4",
+   "text": "Vert !",
+   "t": 23.3,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "c5",
+   "text": "Bleu !",
+   "t": 24.3,
+   "speaker": "Noisette"
+  },
+  {
+   "id": "c6",
+   "text": "Violet !",
+   "t": 25.3,
+   "speaker": "Noisette"
+  }
+ ]
+}

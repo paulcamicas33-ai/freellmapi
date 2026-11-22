@@ -12,9 +12,9 @@ const lines = [
   { id: "l2", text: "Oh non ! Il est coincé dans l'*arbre* !", start: 7.6, end: 11.0, speaker: "Pistache" },
   { id: "l3", text: "On tire la ficelle ? On essaie *ensemble* ?", start: 11.4, end: 15.0, speaker: "Noisette" },
   { id: "l4", text: "Tire avec nous : 1, 2, 3… *tirez* !", start: 15.4, end: 19.6 },
-  { id: "l5", text: "Il vole ! Rouge, jaune, *bleu* !", start: 20.0, end: 23.8, speaker: "Noisette" },
+  { id: "l5", text: "Il vole ! Rouge, jaune, *bleu* !", start: 20.2, end: 23.8, speaker: "Noisette" },
   { id: "l6", text: "Moi *aussi*, je vole avec le vent !", start: 24.2, end: 28.0, speaker: "Pistache" },
-  { id: "l7", text: "À très *vite* !", start: 31.6, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "À très *vite* !", start: 32.7, end: 35.6, speaker: "Noisette" },
 ];
 
 export const ep03: Episode = {

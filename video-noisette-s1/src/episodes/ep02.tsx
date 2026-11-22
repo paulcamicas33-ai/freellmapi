@@ -10,11 +10,11 @@ const lines = [
   { id: "l2", text: "Une carte au trésor ! On essaie *ensemble* ?", start: 7.0, end: 10.6, speaker: "Noisette" },
   { id: "l3", text: "Ils creusent, creusent… sous le vieux *chêne*.", start: 11.0, end: 14.8 },
   { id: "l4", text: "Des glands ! Comptons : 1, 2, 3, 4, *5* !", start: 15.4, end: 19.8, speaker: "Noisette" },
-  { id: "l5", text: "Un pour toi, un pour moi… on *partage* !", start: 20.2, end: 24.2, speaker: "Noisette" },
+  { id: "l5", text: "Un pour toi, un pour moi… on *partage* !", start: 20.6, end: 24.2, speaker: "Noisette" },
   { id: "l6", text: "Le vrai trésor, c'est de *partager* avec ses amis.", start: 24.6, end: 28.8 },
-  { id: "l7", text: "À très *vite* !", start: 31.6, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "À très *vite* !", start: 32.7, end: 35.6, speaker: "Noisette" },
 ];
-const ACORNS = [16.4, 17.0, 17.6, 18.2, 18.8];
+const ACORNS = [16.4, 17.25, 18.1, 18.95, 19.8];
 
 export const ep02: Episode = {
   id: "ep02", number: 2, title: "Le trésor du vieux chêne", duration: 36, endAt: 29.4, lines,

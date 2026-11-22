@@ -25,6 +25,9 @@ PROFILES = {
     "narrateur": ("fr_FR-upmc-medium.onnx", 0, 1.1, 1.0),     # a warm young storyteller
     "Noisette": ("fr_FR-siwis-medium.onnx", None, 1.25, 0.97),  # a little girl
     "Pistache": ("fr_FR-tom-medium.onnx", None, 1.42, 0.95),    # a small boy mouse
+    "Pipo": ("fr_FR-tom-medium.onnx", None, 1.18, 1.05),        # a gentle little bear
+    "Pompon": ("fr_FR-upmc-medium.onnx", 0, 1.38, 0.95),        # a lively little bunny
+    "Lou": ("fr_FR-tom-medium.onnx", None, 1.3, 0.95),          # a young fox
 }
 # Calm, even reading (the user asked for a soft, homogeneous voice): Piper's default variation.
 EXPRESSIVE = ["--noise-scale", "0.6", "--noise-w-scale", "0.7"]

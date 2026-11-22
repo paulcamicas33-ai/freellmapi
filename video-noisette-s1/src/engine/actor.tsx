@@ -1,6 +1,6 @@
 import React from "react";
 import { Critter, Pose, Species, Look, handPosition } from "../cast/Critter";
-import { NOISETTE } from "../cast/mascot";
+import { NOISETTE, PISTACHE } from "../cast/mascot";
 import { Lantern } from "../world/Props";
 import { arrive, prog, lerp } from "../lib/ease";
 import { blink, breathe, squashAt, talk, walk } from "../lib/motion";
@@ -9,11 +9,13 @@ import { GROUND } from "./types";
 
 export type Act =
   | "idle" | "walk" | "wave" | "think" | "joy" | "sad" | "surprise" | "curious" | "point" | "holdUp"
-  | "open" | "hug" | "sleep" | "yawn" | "brush" | "dig" | "laugh" | "scared" | "push" | "proud" | "lookUp" | "blow";
+  | "open" | "hug" | "sleep" | "yawn" | "brush" | "dig" | "laugh" | "scared" | "push" | "proud" | "lookUp" | "blow"
+  | "dance" | "clap" | "crouch" | "pull" | "hideEyes" | "shy" | "water" | "lieDown";
 export type Beat = { at: number; to: number; act: Act; speed?: number; look?: [number, number] };
 
 export type Who = { name: string; species: Species; look: Look; scale: number };
 export const NOI: Who = { name: "Noisette", species: NOISETTE.species, look: NOISETTE.look, scale: 1.35 };
+export const PISTA: Who = { name: "Pistache", species: PISTACHE.species, look: PISTACHE.look, scale: 1.12 };
 export const POMPON: Who = { name: "Pompon", species: "bunny", look: { fur: "#e8ded4", belly: "#ffffff", accent: "#ff8fb1" }, scale: 1.05 };
 export const PIPO: Who = { name: "Pipo", species: "bear", look: { fur: "#9a6a48", belly: "#ecd0a8", accent: "#f2b134" }, scale: 1.15 };
 export const LOU: Who = { name: "Lou", species: "fox", look: { fur: "#f08a4b", belly: "#fff3e2", accent: "#4f8ff0" }, scale: 1.15 };
@@ -43,6 +45,14 @@ const actPose = (act: Act, lt: number, t: number, speed = 2.2): Pose => {
     case "proud": return { blink: 1, smile: 1, headTilt: -6, armL: -30, armR: 30 };
     case "lookUp": return { lookY: -0.9, headTilt: -8, smile: 0.7, brow: 0.4 };
     case "blow": return { mouth: 0.35, brow: 0.2, headTilt: -4 };
+    case "dance": { const b = Math.sin(lt * 7); return { armL: 90 + b * 60, armR: -90 + b * 60, reachL: 0.4, reachR: 0.4, tilt: b * 8, bob: -Math.abs(Math.sin(lt * 7)) * 30, smile: 1, legL: b * 14, legR: b * 14 }; }
+    case "clap": { const c = Math.abs(Math.sin(lt * 9)); return { armL: -50 - c * 30, armR: 50 + c * 30, reachL: 0.2, reachR: 0.2, smile: 1, mouth: 0.3 }; }
+    case "crouch": return { sy: 0.82, sx: 1.12, armL: -30, armR: 30, brow: 0.3, smile: 0.7, lookY: 0.2 };
+    case "pull": return { armL: 75, armR: -75, reachL: 0.55, reachR: 0.55, tilt: -12, brow: -0.3, smile: 0.3, mouth: 0.25 };
+    case "hideEyes": return { armL: -150, armR: 150, reachL: 0.05, reachR: 0.05, blink: 1, smile: 0.8, headTilt: 4 };
+    case "shy": return { armL: -40, armR: 40, headTilt: 12, lookX: -0.6, lookY: 0.5, brow: 0.2, smile: 0.4, sy: 0.96 };
+    case "water": return { armR: -70, reachR: 0.35, tilt: 6, lookY: 0.7, smile: 0.8 };
+    case "lieDown": return { tilt: -80, lookY: -0.9, smile: 0.9, armL: 20, armR: -20 };
     default: return {};
   }
 };

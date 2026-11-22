@@ -1,0 +1,39 @@
+{
+ "music": {
+  "file": "music-snow.wav",
+  "gainDb": -9
+ },
+ "prefix": "voice-s2ep08",
+ "cues": [
+  {
+   "file": "sfx-pop.wav",
+   "t": 11.6,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-pop.wav",
+   "t": 13.4,
+   "gainDb": -8
+  },
+  {
+   "file": "sfx-ding.wav",
+   "t": 18.4,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-tada.wav",
+   "t": 20.4,
+   "gainDb": -6
+  },
+  {
+   "file": "sfx-whoosh-fast.wav",
+   "t": 22.6,
+   "gainDb": -12
+  },
+  {
+   "file": "sfx-squeak.wav",
+   "t": 24.6,
+   "gainDb": -4
+  }
+ ]
+}
