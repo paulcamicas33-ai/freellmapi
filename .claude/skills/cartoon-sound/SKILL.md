@@ -65,9 +65,10 @@ it appears** (the user asked for this): the title card (narrator), every caption
 (list them in the episode's `extraVoices`, with the same words as on screen) and the end card
 (Noisette). `voiceTrack(ep)` in the season engine builds that list; write it to the JSON with its
 times and check that no voice runs into the next one (keep 0.1 s of air), else shorten or re-time.
-Profiles (in `voice.py`, childlike and lively as the user asked): narrator = Jessica ×1.12,
-Noisette = Siwis ×1.32 (a little girl), Pistache = Tom ×1.55 (a small boy mouse), all a bit quicker,
-with Piper's variation raised. Pitch is raised without changing speed. In the season engine set
+Profiles (in `voice.py`, childlike, soft and even, as the user asked): narrator = Jessica ×1.1,
+Noisette = Siwis ×1.25 (a little girl), Pistache = Tom ×1.42 (a small boy mouse). Every line is
+softened: gentle low-pass, smooth compression, the same loudness for every line (RMS -21 dB) and a
+soft ceiling, so there are no peaks or saturation. Keep it that way unless the user asks. Pitch is raised without changing speed. In the season engine set
 `voicePrefix: "voice-<episode>"`; the music ducks 9 dB under voices.
 
 ## 2. Place them

@@ -10,6 +10,7 @@ slower, then the audio is resampled k times faster (stdlib only).
 """
 import array
 import json
+import math
 import os
 import re
 import subprocess
@@ -21,11 +22,12 @@ PROFILES = {
     # model file, speaker id or None, pitch factor k, base speed (length scale, >1 = slower)
     # Childlike and lively: every voice is raised and a little quicker; Piper's variation is raised
     # (noise scales) so the reading is less flat.
-    "narrateur": ("fr_FR-upmc-medium.onnx", 0, 1.12, 0.95),   # a warm young storyteller
-    "Noisette": ("fr_FR-siwis-medium.onnx", None, 1.32, 0.92),  # a little girl
-    "Pistache": ("fr_FR-tom-medium.onnx", None, 1.55, 0.9),     # a small boy mouse
+    "narrateur": ("fr_FR-upmc-medium.onnx", 0, 1.1, 1.0),     # a warm young storyteller
+    "Noisette": ("fr_FR-siwis-medium.onnx", None, 1.25, 0.97),  # a little girl
+    "Pistache": ("fr_FR-tom-medium.onnx", None, 1.42, 0.95),    # a small boy mouse
 }
-EXPRESSIVE = ["--noise-scale", "0.8", "--noise-w-scale", "1.0"]
+# Calm, even reading (the user asked for a soft, homogeneous voice): Piper's default variation.
+EXPRESSIVE = ["--noise-scale", "0.6", "--noise-w-scale", "0.7"]
 NAME = re.compile(r"^[a-z0-9][a-z0-9-]{0,39}$")
 
 
@@ -47,10 +49,38 @@ def resample(samples, k):
     return out
 
 
-def normalize(samples, peak_db=-1.0):
-    peak = max(1, max(abs(s) for s in samples))
-    g = (10 ** (peak_db / 20)) * 32767 / peak
-    return array.array("h", (int(max(-32767, min(32767, s * g))) for s in samples))
+def soften(samples, rate, cutoff=6500.0, rms_db=-21.0, threshold_db=-18.0, ratio=3.0, ceiling_db=-4.0):
+    """Make every line soft and even: gentle low-pass (less harsh sibilants), smooth compression
+    (fewer peaks), the same loudness for every line (RMS), and a soft ceiling (no clipping)."""
+    x = [v / 32768.0 for v in samples]
+    # two one-pole low-passes in series
+    a = 1 - math.exp(-2 * math.pi * cutoff / rate)
+    for _ in range(2):
+        y = 0.0
+        for i, v in enumerate(x):
+            y += a * (v - y)
+            x[i] = y
+    # compressor with a smooth envelope (5 ms attack, 120 ms release)
+    att = math.exp(-1 / (0.005 * rate))
+    rel = math.exp(-1 / (0.12 * rate))
+    thr = 10 ** (threshold_db / 20)
+    env = 0.0
+    for i, v in enumerate(x):
+        lv = abs(v)
+        env = att * env + (1 - att) * lv if lv > env else rel * env + (1 - rel) * lv
+        if env > thr:
+            gain = (thr * (env / thr) ** (1 / ratio)) / env
+            x[i] = v * gain
+    # same loudness for every line
+    rms = math.sqrt(sum(v * v for v in x) / max(1, len(x))) or 1e-9
+    g = (10 ** (rms_db / 20)) / rms
+    ceil = 10 ** (ceiling_db / 20)
+    out = array.array("h", bytes(2 * len(x)))
+    for i, v in enumerate(x):
+        w = v * g
+        w = ceil * math.tanh(w / ceil)  # soft ceiling instead of hard clipping
+        out[i] = int(w * 32767)
+    return out
 
 
 def main(argv):
@@ -78,7 +108,7 @@ def main(argv):
                 samples = array.array("h", w.readframes(w.getnframes()))
         if k != 1.0:
             samples = resample(samples, k)
-        samples = normalize(samples)
+        samples = soften(samples, rate)
         path = os.path.join(out_dir, f"{prefix}-{line['id']}.wav")
         with wave.open(path, "wb") as w:
             w.setnchannels(1)

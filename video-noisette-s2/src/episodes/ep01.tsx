@@ -13,8 +13,8 @@ const lines = [
   { id: "l2", text: "Bonjour ! Je m'appelle Noisette. Et *toi* ?", start: 7.2, end: 10.8, speaker: "Noisette" },
   { id: "l3", text: "Je… je suis *Pistache*.", start: 11.2, end: 14.0, speaker: "Pistache" },
   { id: "l4", text: "Dis bonjour à Pistache avec la *main* !", start: 14.4, end: 18.0 },
-  { id: "l5", text: "On partage le goûter ? On essaie *ensemble* ?", start: 18.4, end: 22.2, speaker: "Noisette" },
-  { id: "l6", text: "Moi *aussi* ! Je veux être ton ami !", start: 22.6, end: 26.4, speaker: "Pistache" },
+  { id: "l5", text: "Veux-tu être mon *ami* ? On partage le goûter !", start: 18.4, end: 22.2, speaker: "Noisette" },
+  { id: "l6", text: "Oui ! Moi *aussi* je veux être ton ami !", start: 22.6, end: 26.4, speaker: "Pistache" },
   { id: "l7", text: "À très *vite* !", start: 31.6, end: 35.6, speaker: "Noisette" },
 ];
 

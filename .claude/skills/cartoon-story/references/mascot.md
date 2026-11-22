@@ -10,7 +10,9 @@ user's audience recognises her from one video to the next. Keep her identical ev
 - **Signature object:** her glowing lantern. She carries it on walks, at dusk and at night; it
   lights faces near her and is a natural motif (it can guide a lost friend, show a hidden path).
 - **Signature line:** « On essaie *ensemble* ? » — said once per story, at the turning point,
-  when she offers help. Children love the repetition; keep the exact words (in another language,
+  when she offers help **to do something together** (fix, find, build, try). Only where it makes
+  sense: if there is nothing to try (a greeting, sharing a snack), use plain words instead
+  (« Veux-tu être mon ami ? On partage le goûter ! »). The user pointed this out. Children love the repetition; keep the exact words (in another language,
   a faithful translation, the same every time).
 - **Signature gesture:** a wave with her left hand, lantern in the right.
 - **Voice in captions:** short, warm sentences; she speaks in the first person in dialogue lines
