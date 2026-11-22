@@ -13,7 +13,7 @@ const lines = [
   { id: "l4", text: "Dis avec nous : pousse, pousse, *pousse* !", start: 15.4, end: 19.8 },
   { id: "l5", text: "Waouh ! Un grand *tournesol* !", start: 20.4, end: 24.0, speaker: "Noisette" },
   { id: "l6", text: "Moi *aussi*, je vais grandir comme lui !", start: 24.4, end: 28.2, speaker: "Pistache" },
-  { id: "l7", text: "À très *vite* !", start: 32.7, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "À très *vite* !", start: 33.0, end: 35.9, speaker: "Noisette" },
 ];
 const PUSH = [16.6, 17.6, 18.6];
 

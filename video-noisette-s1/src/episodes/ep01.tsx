@@ -15,7 +15,7 @@ const lines = [
   { id: "l4", text: "Retiens ton souffle avec nous : 1, 2, *3* !", start: 15.4, end: 20.3, speaker: "Noisette" },
   { id: "l5", text: "Plus de hoquet ! La Lune *brille* de joie.", start: 21.2, end: 25.0 },
   { id: "l6", text: "Ensemble, on y arrive *toujours* !", start: 25.6, end: 29.4, speaker: "Noisette" },
-  { id: "l7", text: "À très *vite* !", start: 33.3, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "À très *vite* !", start: 33.8, end: 35.9, speaker: "Noisette" },
 ];
 
 export const ep01: Episode = {

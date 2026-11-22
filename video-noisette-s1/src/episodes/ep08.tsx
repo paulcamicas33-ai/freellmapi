@@ -12,7 +12,7 @@ const lines = [
   { id: "l4", text: "La pluie s'arrête… regarde *là-haut* !", start: 16.4, end: 19.6, speaker: "Noisette" },
   { id: "l5", text: "Rouge, orange, jaune, vert, bleu, *violet* !", start: 20.0, end: 25.2, speaker: "Noisette" },
   { id: "l6", text: "Après la pluie… vient l'*arc-en-ciel* !", start: 26.4, end: 29.2 },
-  { id: "l7", text: "À très *vite* !", start: 33.1, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "À très *vite* !", start: 33.6, end: 35.9, speaker: "Noisette" },
 ];
 const SPLASH = [11.6, 12.6, 13.6, 14.4];
 const COLORS: [string, string][] = [["ROUGE", "#ff6b6b"], ["ORANGE", "#ffa94d"], ["JAUNE", "#ffd43b"], ["VERT", "#69db7c"], ["BLEU", "#4dabf7"], ["VIOLET", "#9775fa"]];

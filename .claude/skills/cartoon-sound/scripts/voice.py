@@ -23,7 +23,7 @@ PROFILES = {
     # Childlike and lively: every voice is raised and a little quicker; Piper's variation is raised
     # (noise scales) so the reading is less flat.
     "narrateur": ("fr_FR-upmc-medium.onnx", 0, 1.1, 1.0),     # a warm young storyteller
-    "Noisette": ("fr_FR-siwis-medium.onnx", None, 1.25, 0.97),  # a little girl
+    "Noisette": ("fr_FR-siwis-medium.onnx", None, 1.25, 1.18),  # a little girl, speaking slowly and calmly
     "Pistache": ("fr_FR-tom-medium.onnx", None, 1.42, 0.95),    # a small boy mouse
     "Pipo": ("fr_FR-tom-medium.onnx", None, 1.18, 1.05),        # a gentle little bear
     "Pompon": ("fr_FR-upmc-medium.onnx", 0, 1.38, 0.95),        # a lively little bunny

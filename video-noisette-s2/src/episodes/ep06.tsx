@@ -13,7 +13,7 @@ const lines = [
   { id: "l4", text: "Et si on *partageait* ? C'est plus gentil !", start: 15.8, end: 19.6, speaker: "Noisette" },
   { id: "l5", text: "Un pour toi, un pour moi. Compte : 1, 2, 3, *4* !", start: 20.0, end: 24.8 },
   { id: "l6", text: "Moi *aussi* j'aime partager ! C'est meilleur !", start: 25.2, end: 28.8, speaker: "Pistache" },
-  { id: "l7", text: "À très *vite* !", start: 33.0, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "À très *vite* !", start: 33.5, end: 35.9, speaker: "Noisette" },
 ];
 const FOOD: { kind: "apple" | "strawberry" | "banana" | "cheese"; at: number }[] = [
   { kind: "apple", at: 7.4 }, { kind: "strawberry", at: 8.6 }, { kind: "banana", at: 9.8 }, { kind: "cheese", at: 11.0 },

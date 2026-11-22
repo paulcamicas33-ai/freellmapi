@@ -13,7 +13,7 @@ const lines = [
   { id: "l4", text: "Il est de quelle couleur, ton bonnet ? *Orange* !", start: 15.8, end: 19.8, speaker: "Noisette" },
   { id: "l5", text: "Le voilà ! Sur la tête du *bonhomme* de neige !", start: 20.2, end: 24.2 },
   { id: "l6", text: "Moi *aussi* j'ai bien chaud maintenant !", start: 24.6, end: 28.4, speaker: "Pistache" },
-  { id: "l7", text: "À très *vite* !", start: 32.7, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "À très *vite* !", start: 33.3, end: 35.9, speaker: "Noisette" },
 ];
 
 export const ep08: Episode = {

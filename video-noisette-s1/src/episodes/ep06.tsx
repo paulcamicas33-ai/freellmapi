@@ -12,7 +12,7 @@ const lines = [
   { id: "l4", text: "Je t'attends ! On avance *ensemble* ?", start: 15.4, end: 19.0, speaker: "Noisette" },
   { id: "l5", text: "Ils avancent côte à côte, pas à *pas*.", start: 19.4, end: 23.4 },
   { id: "l6", text: "Le plus beau, c'est d'arriver *ensemble* !", start: 25.1, end: 28.8, speaker: "Noisette" },
-  { id: "l7", text: "À très *vite* !", start: 32.7, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "À très *vite* !", start: 33.3, end: 35.9, speaker: "Noisette" },
 ];
 const FINISH = 900;
 

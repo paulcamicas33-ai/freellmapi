@@ -12,7 +12,7 @@ const lines = [
   { id: "l4", text: "Des glands ! Comptons : 1, 2, 3, 4, *5* !", start: 15.4, end: 19.8, speaker: "Noisette" },
   { id: "l5", text: "Un pour toi, un pour moi… on *partage* !", start: 20.6, end: 24.2, speaker: "Noisette" },
   { id: "l6", text: "Le vrai trésor, c'est de *partager* avec ses amis.", start: 24.6, end: 28.8 },
-  { id: "l7", text: "À très *vite* !", start: 32.7, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "À très *vite* !", start: 33.4, end: 35.9, speaker: "Noisette" },
 ];
 const ACORNS = [16.4, 17.25, 18.1, 18.95, 19.8];
 

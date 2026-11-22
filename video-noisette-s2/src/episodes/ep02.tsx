@@ -13,7 +13,7 @@ const lines = [
   { id: "l4", text: "Sa *queue* dépasse du buisson !", start: 16.8, end: 20.4 },
   { id: "l5", text: "Trouvé ! À toi de *compter* maintenant !", start: 20.8, end: 24.6, speaker: "Noisette" },
   { id: "l6", text: "Moi *aussi* je veux encore jouer !", start: 25.0, end: 28.6, speaker: "Pistache" },
-  { id: "l7", text: "À très *vite* !", start: 32.7, end: 35.6, speaker: "Noisette" },
+  { id: "l7", text: "À très *vite* !", start: 33.3, end: 35.9, speaker: "Noisette" },
 ];
 const COUNT = [8.3, 9.2, 10.1, 11.0, 11.9];
 
