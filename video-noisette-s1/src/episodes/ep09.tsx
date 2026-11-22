@@ -9,7 +9,7 @@ const lines = [
   { id: "l1", text: "Voici Flamme, un tout petit *dragon*.", start: 3.4, end: 6.8 },
   { id: "l2", text: "Il veut cracher du feu… mais il fait des *bulles* !", start: 7.2, end: 11.0 },
   { id: "l3", text: "Des bulles ? Mais c'est *magique* !", start: 11.4, end: 14.8, speaker: "Noisette" },
-  { id: "l4", text: "Souffle encore ! On essaie *ensemble* ?", start: 15.2, end: 18.8, speaker: "Noisette" },
+  { id: "l4", text: "Souffle encore ! On va faire plein de *bulles* !", start: 15.2, end: 18.8, speaker: "Noisette" },
   { id: "l5", text: "Des bulles partout ! Tout le monde *rit*.", start: 19.2, end: 23.0 },
   { id: "l6", text: "Sois *toi-même* : c'est ça, ta magie !", start: 23.4, end: 27.6, speaker: "Noisette" },
   { id: "l7", text: "À très *vite* !", start: 32.7, end: 35.6, speaker: "Noisette" },

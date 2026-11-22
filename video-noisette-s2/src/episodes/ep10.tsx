@@ -13,7 +13,7 @@ const lines = [
   { id: "l4", text: "Un mouton, deux moutons, trois *moutons*…", start: 15.2, end: 20.6 },
   { id: "l5", text: "Pistache bâille… Noisette aussi… *Chut* !", start: 21.0, end: 24.8 },
   { id: "l6", text: "Moi *aussi*… j'ai sommeil… Bonne nuit…", start: 25.2, end: 28.8, speaker: "Pistache" },
-  { id: "l7", text: "Bonne nuit les enfants… À très *vite* !", start: 32.7, end: 35.6 },
+  { id: "l7", text: "Bonne nuit les enfants… À très *vite* !", start: 33.2, end: 35.6 },
 ];
 const SHEEP = [15.8, 17.6, 19.4];
 

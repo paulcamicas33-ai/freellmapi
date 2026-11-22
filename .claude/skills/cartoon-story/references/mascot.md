@@ -9,11 +9,10 @@ user's audience recognises her from one video to the next. Keep her identical ev
   scared and tries anyway. She never mocks anyone, never wins by being mean or by magic alone.
 - **Signature object:** her glowing lantern. She carries it on walks, at dusk and at night; it
   lights faces near her and is a natural motif (it can guide a lost friend, show a hidden path).
-- **Signature line:** « On essaie *ensemble* ? » — said once per story, at the turning point,
-  when she offers help **to do something together** (fix, find, build, try). Only where it makes
-  sense: if there is nothing to try (a greeting, sharing a snack), use plain words instead
-  (« Veux-tu être mon ami ? On partage le goûter ! »). The user pointed this out. Children love the repetition; keep the exact words (in another language,
-  a faithful translation, the same every time).
+- **Signature line:** at the turning point she offers help with a **specific** sentence that says
+  what they will do: « On va essayer de la *guérir* ! », « On va le *chercher* ensemble ! », « On va
+  te ramener à la *mer* ! ». Never the vague « On essaie ensemble ? » (the user found it
+  meaningless: « on essaie quoi ? »). The recurring idea is « ensemble », always with a verb.
 - **Signature gesture:** a wave with her left hand, lantern in the right.
 - **Voice in captions:** short, warm sentences; she speaks in the first person in dialogue lines
   (`"speaker": "Noisette"`), the narrator speaks in the third person.
@@ -56,7 +55,7 @@ point of crying alone at the end, or the butt of a joke; put real brand items on
 ## Pistache — Noisette's best friend (from season 2)
 - A shy, greedy, very curious little mouse (species `mouse` in the rig): lavender-grey fur, big
   pink ears, a curly pink tail, an **orange scarf** (`PISTACHE` in `src/cast/mascot.ts`).
-- His line: « Moi *aussi* ! » — once per episode, answering Noisette's « On essaie *ensemble* ? ».
+- His line: « Moi *aussi* ! » — once per episode, answering Noisette's offer of help.
 - He is in every episode from season 2 on, unless the user says otherwise. He is the one who is
   scared, makes a mistake or wants everything for himself; Noisette helps; he ends happy.
 - Signature sound (for the sound sheet): a small cute squeak when he says his line.

@@ -8,7 +8,7 @@ import { arrive, pop, prog } from "../lib/ease";
 
 const lines = [
   { id: "l1", text: "Brrr ! Pistache a perdu son *bonnet*.", start: 3.4, end: 7.0 },
-  { id: "l2", text: "On le cherche ? On essaie *ensemble* ?", start: 7.4, end: 11.0, speaker: "Noisette" },
+  { id: "l2", text: "On va le *chercher* ensemble !", start: 7.4, end: 11.0, speaker: "Noisette" },
   { id: "l3", text: "Celui-là est bleu… celui-là est *vert*…", start: 11.4, end: 15.4 },
   { id: "l4", text: "Il est de quelle couleur, ton bonnet ? *Orange* !", start: 15.8, end: 19.8, speaker: "Noisette" },
   { id: "l5", text: "Le voilà ! Sur la tête du *bonhomme* de neige !", start: 20.2, end: 24.2 },

@@ -30,7 +30,7 @@ PROFILES = {
     "Lou": ("fr_FR-tom-medium.onnx", None, 1.3, 0.95),          # a young fox
 }
 # Calm, even reading (the user asked for a soft, homogeneous voice): Piper's default variation.
-EXPRESSIVE = ["--noise-scale", "0.6", "--noise-w-scale", "0.7"]
+EXPRESSIVE = ["--noise-scale", "0.55", "--noise-w-scale", "0.6"]
 NAME = re.compile(r"^[a-z0-9][a-z0-9-]{0,39}$")
 
 
@@ -39,50 +39,88 @@ def clean(text):
     return re.sub(r"\s+", " ", text).strip()
 
 
-def resample(samples, k):
-    n = int(len(samples) / k)
-    out = array.array("h", bytes(2 * n))
-    for i in range(n):
-        x = i * k
-        j = int(x)
-        f = x - j
-        a = samples[j]
-        b = samples[j + 1] if j + 1 < len(samples) else a
-        out[i] = int(a + (b - a) * f)
-    return out
-
-
-def soften(samples, rate, cutoff=6500.0, rms_db=-21.0, threshold_db=-18.0, ratio=3.0, ceiling_db=-4.0):
-    """Make every line soft and even: gentle low-pass (less harsh sibilants), smooth compression
-    (fewer peaks), the same loudness for every line (RMS), and a soft ceiling (no clipping)."""
-    x = [v / 32768.0 for v in samples]
-    # two one-pole low-passes in series
+def lowpass(x, rate, cutoff, stages=2):
     a = 1 - math.exp(-2 * math.pi * cutoff / rate)
-    for _ in range(2):
+    for _ in range(stages):
         y = 0.0
         for i, v in enumerate(x):
             y += a * (v - y)
             x[i] = y
-    # compressor with a smooth envelope (5 ms attack, 120 ms release)
-    att = math.exp(-1 / (0.005 * rate))
-    rel = math.exp(-1 / (0.12 * rate))
-    thr = 10 ** (threshold_db / 20)
+    return x
+
+
+def resample(x, k):
+    """Read the signal k times faster (raises the pitch by k). Cubic interpolation."""
+    n = int(len(x) / k)
+    out = [0.0] * n
+    last = len(x) - 1
+    for i in range(n):
+        p = i * k
+        j = int(p)
+        f = p - j
+        y0 = x[max(0, j - 1)]; y1 = x[j]; y2 = x[min(last, j + 1)]; y3 = x[min(last, j + 2)]
+        out[i] = y1 + 0.5 * f * (y2 - y0 + f * (2 * y0 - 5 * y1 + 4 * y2 - y3 + f * (3 * (y1 - y2) + y3 - y0)))
+    return out
+
+
+def soft_room(x, rate, mix=0.14):
+    """A small, soft, airy room (gives the 'angelic' softness the user asked for)."""
+    n = len(x)
+    tail = int(0.35 * rate)
+    x = x + [0.0] * tail
+    wet = [0.0] * len(x)
+    for d_ms, g in ((29.7, 0.72), (37.1, 0.7), (41.1, 0.68), (43.7, 0.66)):
+        d = max(1, int(d_ms * rate / 1000))
+        ring = [0.0] * d
+        for i, v in enumerate(x):
+            j = i % d
+            y = ring[j]
+            ring[j] = v + y * g
+            wet[i] += y * 0.25
+    wet = lowpass(wet, rate, 4000.0, 1)
+    return [x[i] * (1 - mix) + wet[i] * mix for i in range(len(x))]
+
+
+def soften(samples, rate, k):
+    """Soft, even, continuous voice: anti-alias filter BEFORE raising the pitch (the harsh
+    'saturated' sound came from aliasing), cubic resampling, gentle compression, a soft airy room,
+    a natural fade at the end of every line, the same loudness for every line and a soft ceiling."""
+    x = [v / 32768.0 for v in samples]
+    if k != 1.0:
+        x = lowpass(x, rate, min(6500.0, 0.42 * rate / k), 3)
+        x = resample(x, k)
+    x = lowpass(x, rate, 6000.0, 2)
+    # trim the silence Piper leaves at the end, so the fade lands on the last syllable
+    thr = 0.01 * max(1e-9, max(abs(v) for v in x))
+    endi = len(x)
+    while endi > 1 and abs(x[endi - 1]) < thr:
+        endi -= 1
+    x = x[: min(len(x), endi + int(0.04 * rate))]
+    # gentle compression (2:1 above -24 dB, slow release) for a continuous, even voice
+    att = math.exp(-1 / (0.008 * rate))
+    rel = math.exp(-1 / (0.25 * rate))
+    t = 10 ** (-24 / 20)
     env = 0.0
     for i, v in enumerate(x):
         lv = abs(v)
         env = att * env + (1 - att) * lv if lv > env else rel * env + (1 - rel) * lv
-        if env > thr:
-            gain = (thr * (env / thr) ** (1 / ratio)) / env
-            x[i] = v * gain
-    # same loudness for every line
+        if env > t:
+            x[i] = v * (t * (env / t) ** 0.5) / env
+    # natural ending: the last 220 ms glide down softly (cosine), a 12 ms fade-in at the start
+    fo = min(len(x) // 3, int(0.22 * rate))
+    for i in range(fo):
+        x[len(x) - fo + i] *= 0.5 * (1 + math.cos(math.pi * (i + 1) / fo))
+    fi = min(len(x) // 4, int(0.012 * rate))
+    for i in range(fi):
+        x[i] *= i / fi
+    x = soft_room(x, rate)
+    # same loudness for every line, soft ceiling (no clipping)
     rms = math.sqrt(sum(v * v for v in x) / max(1, len(x))) or 1e-9
-    g = (10 ** (rms_db / 20)) / rms
-    ceil = 10 ** (ceiling_db / 20)
+    g = (10 ** (-22.0 / 20)) / rms
+    ceil = 10 ** (-5.0 / 20)
     out = array.array("h", bytes(2 * len(x)))
     for i, v in enumerate(x):
-        w = v * g
-        w = ceil * math.tanh(w / ceil)  # soft ceiling instead of hard clipping
-        out[i] = int(w * 32767)
+        out[i] = int(ceil * math.tanh(v * g / ceil) * 32767)
     return out
 
 
@@ -109,9 +147,7 @@ def main(argv):
             with wave.open(raw) as w:
                 rate = w.getframerate()
                 samples = array.array("h", w.readframes(w.getnframes()))
-        if k != 1.0:
-            samples = resample(samples, k)
-        samples = soften(samples, rate)
+        samples = soften(samples, rate, k)
         path = os.path.join(out_dir, f"{prefix}-{line['id']}.wav")
         with wave.open(path, "wb") as w:
             w.setnchannels(1)

@@ -8,7 +8,7 @@ import { prog, pop } from "../lib/ease";
 const lines = [
   { id: "l1", text: "Aujourd'hui, c'est l'anniversaire de *Lou* !", start: 3.4, end: 6.8 },
   { id: "l2", text: "Oups ! Le gâteau *tombe*…", start: 7.4, end: 10.6 },
-  { id: "l3", text: "Pas de souci ! On essaie *ensemble* ?", start: 11.0, end: 14.8, speaker: "Noisette" },
+  { id: "l3", text: "Pas de souci ! On va en *refaire* un !", start: 11.0, end: 14.8, speaker: "Noisette" },
   { id: "l4", text: "Des fruits, de la crème… un *nouveau* gâteau !", start: 15.2, end: 19.0 },
   { id: "l5", text: "Souffle avec Lou : 1, 2, 3… *Fffff* !", start: 19.4, end: 23.4, speaker: "Noisette" },
   { id: "l6", text: "Un gâteau raté, ça se *répare* entre amis.", start: 23.8, end: 27.6 },

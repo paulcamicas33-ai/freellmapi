@@ -8,7 +8,7 @@ import { arrive, pop, prog } from "../lib/ease";
 const lines = [
   { id: "l1", text: "Il neige ! Noisette veut faire un *bonhomme*.", start: 3.4, end: 6.8 },
   { id: "l2", text: "Mais ses piquants font… *pop* !", start: 7.2, end: 10.6 },
-  { id: "l3", text: "Pompon ! Tu m'aides ? On essaie *ensemble* ?", start: 11.0, end: 14.8, speaker: "Noisette" },
+  { id: "l3", text: "Pompon ! On le *construit* ensemble ?", start: 11.0, end: 14.8, speaker: "Noisette" },
   { id: "l4", text: "Pompon roule les boules, Noisette porte la *tête* !", start: 15.2, end: 19.2 },
   { id: "l5", text: "Et voilà mon *écharpe* !", start: 19.6, end: 23.0, speaker: "Noisette" },
   { id: "l6", text: "Seul c'est dur, mais ensemble c'est *facile* !", start: 23.6, end: 27.6 },

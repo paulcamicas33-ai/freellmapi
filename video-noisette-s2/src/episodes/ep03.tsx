@@ -10,7 +10,7 @@ import { cam, keys, prog } from "../lib/ease";
 const lines = [
   { id: "l1", text: "Le vent souffle ! C'est le jour du *cerf-volant*.", start: 3.4, end: 7.0 },
   { id: "l2", text: "Oh non ! Il est coincé dans l'*arbre* !", start: 7.6, end: 11.0, speaker: "Pistache" },
-  { id: "l3", text: "On tire la ficelle ? On essaie *ensemble* ?", start: 11.4, end: 15.0, speaker: "Noisette" },
+  { id: "l3", text: "On va *tirer* la ficelle ensemble !", start: 11.4, end: 15.0, speaker: "Noisette" },
   { id: "l4", text: "Tire avec nous : 1, 2, 3… *tirez* !", start: 15.4, end: 19.6 },
   { id: "l5", text: "Il vole ! Rouge, jaune, *bleu* !", start: 20.2, end: 23.8, speaker: "Noisette" },
   { id: "l6", text: "Moi *aussi*, je vole avec le vent !", start: 24.2, end: 28.0, speaker: "Pistache" },

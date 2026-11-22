@@ -67,8 +67,11 @@ it appears** (the user asked for this): the title card (narrator), every caption
 times and check that no voice runs into the next one (keep 0.1 s of air), else shorten or re-time.
 Profiles (in `voice.py`, childlike, soft and even, as the user asked): narrator = Jessica ×1.1,
 Noisette = Siwis ×1.25 (a little girl), Pistache = Tom ×1.42 (a small boy mouse). Every line is
-softened: gentle low-pass, smooth compression, the same loudness for every line (RMS -21 dB) and a
-soft ceiling, so there are no peaks or saturation. Keep it that way unless the user asks. Pitch is raised without changing speed. In the season engine set
+processed to be soft, continuous and « angelic » (what the user asked for): anti-alias filter before
+the pitch is raised (that aliasing sounded saturated), cubic resampling, gentle 2:1 compression,
+the last 220 ms of every line glide down softly like a human voice (never a hard stop), a small
+airy room, the same loudness for every line (RMS -22 dB) and a soft ceiling. Keep it that way
+unless the user asks. Each file ends with a 0.35 s room tail: allow it when checking overlaps. Pitch is raised without changing speed. In the season engine set
 `voicePrefix: "voice-<episode>"`; the music ducks 9 dB under voices.
 
 ## 2. Place them

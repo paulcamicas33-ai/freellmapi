@@ -7,7 +7,7 @@ import { arrive, pop, prog } from "../lib/ease";
 
 const lines = [
   { id: "l1", text: "Sous une feuille, Noisette trouve une *carte* !", start: 3.4, end: 6.6 },
-  { id: "l2", text: "Une carte au trésor ! On essaie *ensemble* ?", start: 7.0, end: 10.6, speaker: "Noisette" },
+  { id: "l2", text: "Une carte au trésor ! On va le *chercher* ensemble !", start: 7.0, end: 10.6, speaker: "Noisette" },
   { id: "l3", text: "Ils creusent, creusent… sous le vieux *chêne*.", start: 11.0, end: 14.8 },
   { id: "l4", text: "Des glands ! Comptons : 1, 2, 3, 4, *5* !", start: 15.4, end: 19.8, speaker: "Noisette" },
   { id: "l5", text: "Un pour toi, un pour moi… on *partage* !", start: 20.6, end: 24.2, speaker: "Noisette" },
