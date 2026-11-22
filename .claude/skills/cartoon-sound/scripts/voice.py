@@ -24,7 +24,7 @@ PROFILES = {
     # (noise scales) so the reading is less flat.
     "narrateur": ("fr_FR-siwis-medium.onnx", None, 1.0, 1.05),  # a soft storyteller (clearest in the Whisper test)
     "Noisette": ("fr_FR-siwis-medium.onnx", None, 1.25, 1.18),  # a little girl, speaking slowly and calmly
-    "Pistache": ("fr_FR-tom-medium.onnx", None, 1.42, 0.95),    # a small boy mouse
+    "Pistache": ("fr_FR-upmc-medium.onnx", 0, 1.12, 1.1),     # a gentle child (a woman's voice barely raised: the old boy-mouse x1.42 sounded metallic)
     "Pipo": ("fr_FR-tom-medium.onnx", None, 1.18, 1.05),        # a gentle little bear
     "Pompon": ("fr_FR-upmc-medium.onnx", 0, 1.38, 0.95),        # a lively little bunny
     "Lou": ("fr_FR-tom-medium.onnx", None, 1.3, 0.95),          # a young fox

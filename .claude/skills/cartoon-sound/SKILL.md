@@ -66,7 +66,7 @@ it appears** (the user asked for this): the title card (narrator), every caption
 (Noisette). `voiceTrack(ep)` in the season engine builds that list; write it to the JSON with its
 times and check that no voice runs into the next one (keep 0.1 s of air), else shorten or re-time.
 Profiles (in `voice.py`, childlike, soft and even, as the user asked): narrator = Jessica ×1.1,
-Noisette = Siwis ×1.25, spoken slowly (length scale 1.18, the user found her too fast) (a little girl), Pistache = Tom ×1.42 (a small boy mouse). Every line is
+Noisette = Siwis ×1.25, spoken slowly (length scale 1.18, the user found her too fast) (a little girl), Pistache = Jessica ×1.12, slow (a gentle child; never raise a man's voice a lot — Tom ×1.42 sounded metallic, 52 % of its energy above 4 kHz). Every line is
 processed to be soft, continuous and « angelic » (what the user asked for): anti-alias filter before
 the pitch is raised (that aliasing sounded saturated), cubic resampling, gentle 2:1 compression,
 the last 220 ms of every line glide down softly like a human voice (never a hard stop), a small
