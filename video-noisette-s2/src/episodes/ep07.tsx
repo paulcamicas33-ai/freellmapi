@@ -10,7 +10,7 @@ const lines = [
   { id: "l1", text: "La musique commence ! On *danse* ?", start: 3.4, end: 6.8, speaker: "Noisette" },
   { id: "l2", text: "On saute ! Saute avec *nous* !", start: 7.2, end: 10.8 },
   { id: "l3", text: "On tape des *mains* : clap, clap, clap !", start: 11.2, end: 14.8 },
-  { id: "l4", text: "Je ne sais pas danser, moi… *Oups* !", start: 15.2, end: 18.8, speaker: "Pistache" },
+  { id: "l4", text: "*Oups* ! Je ne sais pas danser, moi !", start: 15.2, end: 18.8, speaker: "Pistache" },
   { id: "l5", text: "On danse *ensemble* ? Je te tiens la main !", start: 19.2, end: 23.0, speaker: "Noisette" },
   { id: "l6", text: "Moi *aussi* je danse ! C'est trop bien !", start: 23.4, end: 28.0, speaker: "Pistache" },
   { id: "l7", text: "À très *vite* !", start: 32.7, end: 35.6, speaker: "Noisette" },

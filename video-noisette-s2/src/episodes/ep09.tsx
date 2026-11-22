@@ -12,7 +12,7 @@ const lines = [
   { id: "l3", text: "Compte avec nous : 1, 2, 3, 4, *5* !", start: 11.4, end: 16.6 },
   { id: "l4", text: "Oh ! Une étoile *filante* ! Fais un souhait !", start: 17.0, end: 20.8, speaker: "Noisette" },
   { id: "l5", text: "Je voudrais rester ton *ami* pour toujours !", start: 21.2, end: 25.0, speaker: "Pistache" },
-  { id: "l6", text: "Moi *aussi* !", start: 25.4, end: 28.2, speaker: "Noisette" },
+  { id: "l6", text: "Moi *aussi*, je le veux !", start: 25.4, end: 28.2, speaker: "Noisette" },
   { id: "l7", text: "À très *vite* !", start: 33.2, end: 35.9, speaker: "Noisette" },
 ];
 const STARS = [
